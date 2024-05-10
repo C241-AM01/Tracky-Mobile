@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "942851248435",
+    "project_id": "tracky-bd7c4",
+    "storage_bucket": "tracky-bd7c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942851248435:android:3804e3c7257a1cc5682e46",
+        "android_client_info": {
+          "package_name": "com.megalogic.tracky"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcxAJj3fxmxWov4gHnAmo7ujCsGenU2Kk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
