@@ -16,4 +16,9 @@
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/title_notifications" />
 
+    <item
+        android:id="@+id/navigation_livetracking"
+        android:icon="@drawable/ic_location_black_24dp"
+        android:title="@string/title_live_tracking" />
+
 </menu>
