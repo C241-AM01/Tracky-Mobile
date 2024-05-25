@@ -10,9 +10,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.megalogic.tracky.R
 import com.megalogic.tracky.data.Asset
 import com.megalogic.tracky.utils.setImageFromUrl
+import android.widget.Filter
+import android.widget.Filterable
+import java.util.Locale
 
-class AssetListAdapter(private val context: Context, private val assetResponses: List<Asset>) :
-    RecyclerView.Adapter<AssetListAdapter.AssetViewHolder>() {
+class AssetListAdapter(
+    private val context: Context,
+    private var assetResponses: List<Asset>
+) : RecyclerView.Adapter<AssetListAdapter.AssetViewHolder>(), Filterable {
+
+    private var assetResponsesFiltered: List<Asset> = assetResponses
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AssetViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_asset, parent, false)
@@ -20,12 +27,12 @@ class AssetListAdapter(private val context: Context, private val assetResponses:
     }
 
     override fun onBindViewHolder(holder: AssetViewHolder, position: Int) {
-        val assetResponse = assetResponses[position]
+        val assetResponse = assetResponsesFiltered[position]
         holder.bind(assetResponse)
     }
 
     override fun getItemCount(): Int {
-        return assetResponses.size
+        return assetResponsesFiltered.size
     }
 
     inner class AssetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -42,6 +49,28 @@ class AssetListAdapter(private val context: Context, private val assetResponses:
             descriptionTextView.text = assetResponse.description
             priceTextView.text = assetResponse.price.toString()
             dateTextView.text = assetResponse.date
+        }
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(charSequence: CharSequence?): FilterResults {
+                val charString = charSequence?.toString()?.lowercase(Locale.getDefault()) ?: ""
+                assetResponsesFiltered = if (charString.isEmpty()) {
+                    assetResponses
+                } else {
+                    assetResponses.filter {
+                        it.title.lowercase(Locale.getDefault()).contains(charString) ||
+                                it.description.lowercase(Locale.getDefault()).contains(charString)
+                    }
+                }
+                return FilterResults().apply { values = assetResponsesFiltered }
+            }
+
+            override fun publishResults(charSequence: CharSequence?, filterResults: FilterResults?) {
+                assetResponsesFiltered = filterResults?.values as List<Asset>
+                notifyDataSetChanged()
+            }
         }
     }
 }
