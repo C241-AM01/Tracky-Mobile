@@ -17,10 +17,12 @@
         android:textSize="30sp" />
 
     <SearchView
+        android:id="@+id/sv_asset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_asset"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_asset" />
