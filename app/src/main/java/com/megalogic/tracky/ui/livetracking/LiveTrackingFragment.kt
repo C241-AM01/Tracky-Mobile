@@ -39,7 +39,7 @@ class LiveTrackingFragment : Fragment() {
                     .position(latLng)
                     .title("${latLng.latitude} : ${latLng.longitude}")
                 googleMap.clear()
-                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 0f))
                 googleMap.addMarker(markerOptions)
             }
         }
