@@ -8,8 +8,8 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.megalogic.tracky.adapter.AssetListAdapter
-import com.megalogic.tracky.data.Asset
-import com.megalogic.tracky.data.DummyData
+import com.megalogic.tracky.data.asset.Asset
+import com.megalogic.tracky.data.asset.DummyData
 import com.megalogic.tracky.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {

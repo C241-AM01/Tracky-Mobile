@@ -1,4 +1,4 @@
-package com.megalogic.tracky.data
+package com.megalogic.tracky.data.asset
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

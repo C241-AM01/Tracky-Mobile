@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.megalogic.tracky.R
-import com.megalogic.tracky.data.Asset
+import com.megalogic.tracky.data.asset.Asset
 import com.megalogic.tracky.utils.setImageFromUrl
 import android.widget.Filter
 import android.widget.Filterable
