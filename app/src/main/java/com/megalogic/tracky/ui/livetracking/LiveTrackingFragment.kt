@@ -1,5 +1,6 @@
 package com.megalogic.tracky.ui.livetracking
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,14 +8,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.megalogic.tracky.data.location.DummyDataLoc
 import com.megalogic.tracky.databinding.FragmentLiveTrackingBinding
 
 class LiveTrackingFragment : Fragment() {
     private var _binding: FragmentLiveTrackingBinding? = null
     private val binding get() = _binding!!
+    private lateinit var mapView: MapView
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +47,20 @@ class LiveTrackingFragment : Fragment() {
                 googleMap.clear()
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 0f))
                 googleMap.addMarker(markerOptions)
+
+                val polylineOptions = PolylineOptions()
+                    .addAll(DummyDataLoc.locationHistory)
+                    .color(Color.BLUE)
+                    .width(5f)
+
+                googleMap.addPolyline(polylineOptions)
+                for (location in DummyDataLoc.locationHistory) {
+                    googleMap.addMarker(
+                        MarkerOptions()
+                            .position(location)
+                            .title("Marker in ${location.latitude}, ${location.longitude}")
+                    )
+                }
             }
         }
 

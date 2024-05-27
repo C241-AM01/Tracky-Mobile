@@ -1,4 +1,4 @@
-package com.megalogic.tracky.data
+package com.megalogic.tracky.data.asset
 
 object DummyData {
     val itemAsset = listOf(
@@ -37,7 +37,5 @@ object DummyData {
             price = 300.0,
             date = "2023-04-04"
         )
-
-
     )
 }
