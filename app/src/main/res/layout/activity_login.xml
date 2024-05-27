@@ -5,63 +5,103 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/surface"
     android:gravity="center"
     android:padding="16dp"
     tools:context=".ui.login.LoginActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_login_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:gravity="center"
-        android:text="@string/login"
-        android:textSize="25sp"
+        android:layout_marginTop="150dp"
+        android:gravity="start"
+        android:textColor="@color/black"
+        android:text="@string/login_title"
+        android:fontFamily="@font/plus_jakarta_sans"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tv_login_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/plus_jakarta_sans"
+        android:gravity="start"
+        android:text="@string/login_desc"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login_title" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/tv_login_desc">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout"
+            android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="12dp"
+            app:startIconDrawable="@drawable/ic_email_state"
+            app:startIconTint="@drawable/email_icon_color"
+            app:boxStrokeColor="@drawable/email_icon_color"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopStart="12dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/email">
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:hint="@string/email"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:textColorHint="@color/accent"
+                android:textColorHighlight="@color/accent">
 
             </com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout2"
+            android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="4dp"
+            app:startIconDrawable="@drawable/ic_password_state"
+            app:startIconTint="@drawable/password_icon_color"
+            app:boxStrokeColor="@drawable/password_icon_color"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopStart="12dp"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/password">
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:hint="@string/password"
+                android:textColorHint="@color/accent"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:textColor="@color/accent"
+                android:textColorHighlight="@color/accent">
 
             </com.google.android.material.textfield.TextInputEditText>
 
@@ -74,10 +114,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:height="50dp"
+        android:width="380dp"
+        android:textSize="16sp"
+        android:backgroundTint="@color/accent"
+        android:fontFamily="@font/plus_jakarta_sans"
         android:text="@string/login"
+        android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        />
 
     <LinearLayout
         android:id="@+id/linearLayout2"

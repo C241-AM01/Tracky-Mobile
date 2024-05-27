@@ -14,7 +14,8 @@ import com.megalogic.tracky.databinding.ActivityLoginBinding
 import com.megalogic.tracky.databinding.ActivityRegisterBinding
 import com.megalogic.tracky.ui.register.RegisterActivity
 
-class LoginActivity : AppCompatActivity() {
+class
+LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var firebaseAuth: FirebaseAuth
 

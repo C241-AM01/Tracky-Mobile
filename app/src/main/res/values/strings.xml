@@ -3,10 +3,22 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <!--    Login   -->
     <string name="login">Login</string>
+    <string name="login_title">Let’s sign you in.</string>
+    <string name="login_desc">Log in to your account</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="register">Register</string>
     <string name="already_have_an_account">Already have an account? </string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
+
+    <!--   Home    -->
+    <string name="asset_stat">Asset</string>
+    <string name="asset_stat_num">0</string>
+    <string name="delivery_stat">Delivery</string>
+    <string name="delivery_stat_num">0</string>
+
+
 </resources>
