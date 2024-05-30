@@ -22,4 +22,10 @@
         android:name="com.megalogic.tracky.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    
+    <fragment
+        android:id="@+id/navigation_livetracking"
+        android:name="com.megalogic.tracky.ui.livetracking.LiveTrackingFragment"
+        android:label="@string/title_live_tracking"
+        tools:layout="@layout/fragment_live_tracking" />
 </navigation>
