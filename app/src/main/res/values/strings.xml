@@ -12,17 +12,34 @@
     <string name="title_activity_maps">MapsActivity</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    
+
+    <!--    Asset List  -->
+    <string name="depreciation_amount">-Rp0/time</string>
+    <string name="asset_title">Asset Title</string>
+    <string name="asset_description">Asset Description</string>
+    <string name="asset_final_price">Rp100.000</string>
+    <string name="asset_initial_price"><strike>Rp110.000</strike></string>
+    <string name="asset_depreciation_time">-2</string>
+    <string name="asset_depreciation_period">Days</string>
+    <string name="purchased_on">Purchased on</string>
+    <string name="purchase_date">01-01-2024</string>
+
+
     <!--    Login   -->
     <string name="login">Login</string>
-    <string name="login_title">Let's sign you in</string>
+    <string name="login_title">Let\\s sign you in</string>
     <string name="login_desc">Log in to your account</string>
 
     <!--   Home    -->
-    <string name="asset_stat">Asset</string>
-    <string name="asset_stat_num">0</string>
+    <string name="hello">Hello, </string>
     <string name="user_title">User</string>
+
+    <string name="asset_stat">Asset</string>
+    <string name="asset_amount">0</string>
+
     <string name="delivery_stat">Delivery</string>
-    <string name="delivery_stat_num">0</string>
-    
+    <string name="delivery_amount">0</string>
+
+    <string name="ongoing_activity">Ongoing Activity</string>
+
 </resources>

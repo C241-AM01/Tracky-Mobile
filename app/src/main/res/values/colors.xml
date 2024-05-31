@@ -11,6 +11,8 @@
     <color name="accent">#FC5200</color>
     <color name="outline">#757375</color>
     <color name="surface">#F5F5F5</color>
+    <color name="depreciation">#DC3823</color>
+    <color name="disable">#717171</color>
 
 
 </resources>

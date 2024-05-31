@@ -7,82 +7,187 @@
     android:clipToPadding="false"
     android:paddingVertical="8dp">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="4dp"
+        app:cardCornerRadius="8dp"
         app:cardElevation="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="8dp">
+            >
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_image_asset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                tools:srcCompat="@tools:sample/avatars" />
+                >
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/img_asset"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:srcCompat="@tools:sample/avatars" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/img_asset"
+                        app:layout_constraintBottom_toBottomOf="@id/img_asset"
+                        android:background="@drawable/depreciation_status_asset_list">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/depreciation_amount"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/plus_jakarta_sans"
+                            android:background="@color/depreciation"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="4dp"
+                            android:paddingStart="6dp"
+                            android:paddingEnd="6dp"
+                            />
+                    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tv_asset_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:fontFamily="@font/plus_jakarta_sans"
-                android:text="Asset Title"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/textView6"
-                app:layout_constraintHorizontal_bias="0.031"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:text="@string/asset_title"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/plus_jakarta_sans"
-                android:text="Asset Description"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.02"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                android:layout_marginStart="8dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/card_image_asset"
+                app:layout_constraintTop_toTopOf="@+id/card_image_asset" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/tv_asset_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/plus_jakarta_sans"
-                android:text="Asset Price"
-                android:textStyle="bold"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="12sp"
+                android:text="@string/asset_description"
+                app:layout_constraintStart_toEndOf="@+id/card_image_asset"
+                app:layout_constraintTop_toBottomOf="@id/tv_asset_title"
+                android:layout_marginStart="8dp"
+                />
+
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/tv_asset_final_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="@string/asset_final_price"
+                app:layout_constraintStart_toEndOf="@+id/card_image_asset"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_asset_initial_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:background="@android:color/darker_gray"
-                android:paddingHorizontal="5dp"
                 android:fontFamily="@font/plus_jakarta_sans"
-                android:text="Asset Date"
+                android:text="@string/asset_initial_price"
+                android:textColor="@color/disable"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_asset_final_price"
+                app:layout_constraintStart_toEndOf="@+id/card_image_asset" />
+
+            <TextView
+                android:id="@+id/tv_asset_depreciation_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:text="@string/asset_depreciation_time"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/depreciation"
+                app:layout_constraintStart_toEndOf="@+id/tv_asset_initial_price"
+                app:layout_constraintBottom_toTopOf="@+id/tv_asset_final_price"
+                />
+
+            <TextView
+                android:id="@+id/tv_asset_depreciation_period"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:text="@string/asset_depreciation_period"
+                android:layout_marginStart="3dp"
+                android:textColor="@color/depreciation"
+                app:layout_constraintStart_toEndOf="@+id/tv_asset_depreciation_time"
+                app:layout_constraintBottom_toTopOf="@+id/tv_asset_final_price"
+                />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.018"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/textView5"
-                app:layout_constraintVertical_bias="1.0" />
+                app:cardCornerRadius="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="4dp"
+                app:strokeColor="@color/disable"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="4dp"
+                    android:paddingHorizontal="8dp">
+                    <TextView
+                        android:id="@+id/purchase_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="11sp"
+                        android:textColor="@color/disable"
+                        android:text="@string/purchased_on"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/disable"
+                        android:text="@string/purchase_date"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/purchase_date"
+                        />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            </com.google.android.material.card.MaterialCardView>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </FrameLayout>
