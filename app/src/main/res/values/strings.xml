@@ -24,6 +24,8 @@
     <string name="purchased_on">Purchased on</string>
     <string name="purchase_date">01–01–2024</string>
     <string name="img_asset">Asset Image</string>
+    <string name="box_icon">Box Icon</string>
+    <string name="truck_icon">Truck con</string>
 
 
     <!--    Login   -->

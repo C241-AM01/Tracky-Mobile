@@ -87,6 +87,7 @@
                         android:layout_marginTop="4dp"
                         app:layout_constraintTop_toTopOf="@id/asset_amount"
                         app:layout_constraintStart_toStartOf="parent"
+                        android:contentDescription="@string/box_icon"
                         />
 
                     <TextView
@@ -154,6 +155,7 @@
                         android:layout_marginTop="4dp"
                         app:layout_constraintTop_toTopOf="@id/delivery_amount"
                         app:layout_constraintStart_toStartOf="parent"
+                        android:contentDescription="@string/truck_icon"
                         />
 
                     <TextView
