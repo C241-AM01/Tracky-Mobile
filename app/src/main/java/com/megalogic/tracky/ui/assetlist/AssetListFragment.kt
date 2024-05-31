@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.megalogic.tracky.adapter.AssetListAdapter
-import com.megalogic.tracky.data.asset.Asset
+import com.megalogic.tracky.data.asset.AssetResponse
 import com.megalogic.tracky.data.asset.DummyData
 import com.megalogic.tracky.databinding.FragmentAssetListBinding
 
@@ -20,7 +20,7 @@ class AssetListFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var assetAdapter: AssetListAdapter
-    private var assetList: List<Asset> = DummyData.itemAsset
+    private var assetList: List<AssetResponse> = DummyData.itemAsset
 
     override fun onCreateView(
         inflater: LayoutInflater,
