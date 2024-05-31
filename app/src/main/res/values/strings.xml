@@ -22,7 +22,8 @@
     <string name="asset_depreciation_time">-2</string>
     <string name="asset_depreciation_period">Days</string>
     <string name="purchased_on">Purchased on</string>
-    <string name="purchase_date">01-01-2024</string>
+    <string name="purchase_date">01–01–2024</string>
+    <string name="img_asset">Asset Image</string>
 
 
     <!--    Login   -->
