@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.megalogic.tracky"
-        minSdk = 24
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -60,6 +60,8 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation (libs.play.services.maps.v1820)
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.core:core-splashscreen:1.2.0-alpha01")
+
 
 }
 
