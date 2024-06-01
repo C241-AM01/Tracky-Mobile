@@ -85,8 +85,8 @@
 
                     <ImageView
                         android:id="@+id/icon_asset_card"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/ic_box_outline_accent"
                         android:layout_marginTop="4dp"
                         app:layout_constraintTop_toTopOf="@id/asset_amount"
@@ -157,8 +157,8 @@
 
                     <ImageView
                         android:id="@+id/icon_delivery_card"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:src="@drawable/ic_truck_outline_accent"
                         android:layout_marginTop="4dp"
                         app:layout_constraintTop_toTopOf="@id/delivery_amount"

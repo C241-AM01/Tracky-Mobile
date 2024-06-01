@@ -208,8 +208,8 @@
 
                 <ImageView
                     android:id="@+id/ic_tracker_id"
-                    android:layout_width="20dp"
-                    android:layout_height="13dp"
+                    android:layout_width="18dp"
+                    android:layout_height="12dp"
                     android:contentDescription="@string/ic_truck_id"
                     android:src="@drawable/ic_truck_id"
                     app:layout_constraintBottom_toBottomOf="parent"
