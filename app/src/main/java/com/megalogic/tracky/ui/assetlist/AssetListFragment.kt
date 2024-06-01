@@ -1,20 +1,25 @@
-package com.megalogic.tracky.ui.home
+package com.megalogic.tracky.ui.assetlist
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.megalogic.tracky.adapter.AssetListAdapter
 import com.megalogic.tracky.data.Asset
 import com.megalogic.tracky.data.DummyData
+import com.megalogic.tracky.databinding.FragmentAssetListBinding
 import com.megalogic.tracky.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment() {
+class AssetListFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentAssetListBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var assetAdapter: AssetListAdapter
     private var assetList: List<Asset> = DummyData.itemAsset
@@ -24,7 +29,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentAssetListBinding.inflate(inflater, container, false)
         return binding.root
     }
 

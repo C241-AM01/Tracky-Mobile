@@ -12,12 +12,10 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
         app:cardElevation="0dp">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_image_asset"
                 android:layout_width="wrap_content"
@@ -180,15 +178,8 @@
                         app:layout_constraintTop_toBottomOf="@id/purchase_date"
                         />
 
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
             </com.google.android.material.card.MaterialCardView>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.google.android.material.card.MaterialCardView>
-
 </FrameLayout>

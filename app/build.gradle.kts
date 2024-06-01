@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
+    id ("kotlin-parcelize")
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 }
 
@@ -54,13 +55,15 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.androidx.activity)
     implementation(libs.play.services.maps)
-    implementation(libs.car.ui.lib)
+    implementation (libs.glide)
+    annotationProcessor (libs.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation (libs.play.services.maps.v1820)
-    implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.core:core-splashscreen:1.2.0-alpha01")
+    implementation(libs.androidx.cardview)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.car.ui.lib)
 
 
 }

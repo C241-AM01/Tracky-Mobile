@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Tracky</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_asset_list">Asset List</string>
     <string name="title_live_tracking">Live Tracking</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_maps">MapsActivity</string>
@@ -36,13 +36,10 @@
     <!--   Home    -->
     <string name="hello">Hello, </string>
     <string name="user_title">User</string>
-
     <string name="asset_stat">Asset</string>
     <string name="asset_amount">0</string>
-
     <string name="delivery_stat">Delivery</string>
     <string name="delivery_amount">0</string>
-
     <string name="ongoing_activity">Ongoing Activity</string>
 
 </resources>
