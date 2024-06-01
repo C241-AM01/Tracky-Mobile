@@ -12,6 +12,7 @@ import com.megalogic.tracky.MainActivity
 import com.megalogic.tracky.R
 import com.megalogic.tracky.databinding.ActivityLoginBinding
 import com.megalogic.tracky.databinding.ActivityRegisterBinding
+import com.megalogic.tracky.ui.admin.AdminMainActivity
 import com.megalogic.tracky.ui.register.RegisterActivity
 
 class
@@ -27,7 +28,7 @@ LoginActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.btnRegister.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, AdminMainActivity::class.java)
             startActivity(intent)
         }
 
@@ -38,7 +39,7 @@ LoginActivity : AppCompatActivity() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        val intent = Intent(this, MainActivity::class.java)
+                        val intent = Intent(this, AdminMainActivity::class.java)
                         startActivity(intent)
                     } else {
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()

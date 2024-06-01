@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.megalogic.tracky.R
-import com.megalogic.tracky.data.Asset
+import com.megalogic.tracky.data.asset.AssetResponse
 import com.megalogic.tracky.utils.setImageFromUrl
 import android.widget.Filter
 import android.widget.Filterable
@@ -16,10 +16,10 @@ import java.util.Locale
 
 class AssetListAdapter(
     private val context: Context,
-    private var assetResponses: List<Asset>
+    private var assetResponses: List<AssetResponse>
 ) : RecyclerView.Adapter<AssetListAdapter.AssetViewHolder>(), Filterable {
 
-    private var assetResponsesFiltered: List<Asset> = assetResponses
+    private var assetResponsesFiltered: List<AssetResponse> = assetResponses
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AssetViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_asset, parent, false)
@@ -43,7 +43,7 @@ class AssetListAdapter(
         private val priceTextView: TextView = itemView.findViewById(R.id.tv_asset_price)
         private val dateTextView: TextView = itemView.findViewById(R.id.tv_asset_date)
 
-        fun bind(assetResponse: Asset) {
+        fun bind(assetResponse: AssetResponse) {
             titleTextView.text = assetResponse.title
             assetImageView.setImageFromUrl(context, assetResponse.image)
             descriptionTextView.text = assetResponse.description
@@ -68,7 +68,7 @@ class AssetListAdapter(
             }
 
             override fun publishResults(charSequence: CharSequence?, filterResults: FilterResults?) {
-                assetResponsesFiltered = filterResults?.values as List<Asset>
+                assetResponsesFiltered = filterResults?.values as List<AssetResponse>
                 notifyDataSetChanged()
             }
         }

@@ -6,13 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.megalogic.tracky.adapter.AssetListAdapter
-import com.megalogic.tracky.data.Asset
-import com.megalogic.tracky.data.DummyData
+import com.megalogic.tracky.data.asset.AssetResponse
+import com.megalogic.tracky.data.asset.DummyData
 import com.megalogic.tracky.databinding.FragmentAssetListBinding
-import com.megalogic.tracky.databinding.FragmentHomeBinding
 
 class AssetListFragment : Fragment() {
 
@@ -22,7 +20,7 @@ class AssetListFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var assetAdapter: AssetListAdapter
-    private var assetList: List<Asset> = DummyData.itemAsset
+    private var assetList: List<AssetResponse> = DummyData.itemAsset
 
     override fun onCreateView(
         inflater: LayoutInflater,
