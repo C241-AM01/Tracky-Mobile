@@ -21,6 +21,8 @@
     <string name="img_asset">Asset Image</string>
     <string name="box_icon">Box Icon</string>
     <string name="truck_icon">Truck con</string>
+    <string name="truck_id">123</string>
+    <string name="ic_truck_id">Truck icon</string>
 
 
     <!--    Login   -->

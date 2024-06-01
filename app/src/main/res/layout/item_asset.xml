@@ -5,21 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clipToPadding="false"
-    android:paddingVertical="8dp">
+    android:paddingVertical="4dp">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
+        android:layout_height="128dp"
+        app:strokeWidth="0dp"
+        app:cardBackgroundColor="@color/container"
+        app:cardCornerRadius="16dp"
         app:cardElevation="0dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             >
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_image_asset"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:strokeWidth="0dp"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 >
@@ -27,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/img_asset"
+                        android:id="@+id/iv_asset_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,8 +43,8 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="@id/img_asset"
-                        app:layout_constraintBottom_toBottomOf="@id/img_asset"
+                        app:layout_constraintStart_toStartOf="@id/iv_asset_image"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_asset_image"
                         android:background="@drawable/depreciation_status_asset_list">
                         <TextView
                             android:layout_width="wrap_content"
@@ -48,7 +52,7 @@
                             android:text="@string/depreciation_amount"
                             android:textColor="@color/white"
                             android:fontFamily="@font/plus_jakarta_sans"
-                            android:background="@color/depreciation"
+                            android:background="@color/accent"
                             android:paddingTop="2dp"
                             android:paddingBottom="4dp"
                             android:paddingStart="6dp"
@@ -61,28 +65,33 @@
 
             <TextView
                 android:id="@+id/tv_asset_title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/plus_jakarta_sans"
                 android:text="@string/asset_title"
+                android:textColor="@color/black"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="8dp"
                 android:textStyle="bold"
                 android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@id/cl_tracker_id"
                 app:layout_constraintStart_toEndOf="@+id/card_image_asset"
                 app:layout_constraintTop_toTopOf="@+id/card_image_asset" />
 
             <TextView
-                android:id="@+id/tv_asset_desc"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_asset_description"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/plus_jakarta_sans"
-                android:textSize="12sp"
-                android:text="@string/asset_description"
-                app:layout_constraintStart_toEndOf="@+id/card_image_asset"
-                app:layout_constraintTop_toBottomOf="@id/tv_asset_title"
                 android:layout_marginStart="8dp"
-                />
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="@string/asset_description"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_asset_depreciation_period"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/card_image_asset"
+                app:layout_constraintTop_toBottomOf="@id/tv_asset_title" />
 
 
             <TextView
@@ -90,13 +99,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/plus_jakarta_sans"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:text="@string/asset_final_price"
                 app:layout_constraintStart_toEndOf="@+id/card_image_asset"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="10dp"
                 />
 
             <TextView
@@ -120,7 +130,7 @@
                 android:textStyle="bold"
                 android:text="@string/asset_depreciation_time"
                 android:layout_marginStart="8dp"
-                android:textColor="@color/depreciation"
+                android:textColor="@color/accent"
                 app:layout_constraintStart_toEndOf="@+id/tv_asset_initial_price"
                 app:layout_constraintBottom_toTopOf="@+id/tv_asset_final_price"
                 />
@@ -134,7 +144,7 @@
                 android:textStyle="bold"
                 android:text="@string/asset_depreciation_period"
                 android:layout_marginStart="3dp"
-                android:textColor="@color/depreciation"
+                android:textColor="@color/accent"
                 app:layout_constraintStart_toEndOf="@+id/tv_asset_depreciation_time"
                 app:layout_constraintBottom_toTopOf="@+id/tv_asset_final_price"
                 />
@@ -144,9 +154,11 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="4dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="10dp"
                 app:strokeColor="@color/disable"
                 >
 
@@ -156,10 +168,11 @@
                     android:paddingVertical="4dp"
                     android:paddingHorizontal="8dp">
                     <TextView
-                        android:id="@+id/purchase_date"
+                        android:id="@+id/purchased_on"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="11sp"
+                        android:textSize="9sp"
+                        android:fontFamily="@font/plus_jakarta_sans"
                         android:textColor="@color/disable"
                         android:text="@string/purchased_on"
                         app:layout_constraintStart_toStartOf="parent"
@@ -167,19 +180,73 @@
                         app:layout_constraintTop_toTopOf="parent"
                         />
                     <TextView
+                        android:id="@+id/tv_asset_purchased_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:textSize="11sp"
                         android:textStyle="bold"
                         android:textColor="@color/disable"
+                        android:fontFamily="@font/plus_jakarta_sans"
+
                         android:text="@string/purchase_date"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/purchase_date"
+                        app:layout_constraintTop_toBottomOf="@id/purchased_on"
                         />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_tracker_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_asset_title"
+                app:layout_constraintBottom_toBottomOf="@id/tv_asset_title">
+
+                <ImageView
+                    android:id="@+id/ic_tracker_id"
+                    android:layout_width="20dp"
+                    android:layout_height="13dp"
+                    android:contentDescription="@string/ic_truck_id"
+                    android:src="@drawable/ic_truck_id"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/mcv_tracker_id"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_tracker_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="6dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ic_tracker_id"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeWidth="0dp">
+
+                    <TextView
+                        android:id="@+id/tv_tracker_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/plus_jakarta_sans"
+                        android:paddingHorizontal="4dp"
+                        android:paddingBottom="3dp"
+                        android:text="@string/truck_id"
+                        android:textColor="@color/black"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </FrameLayout>

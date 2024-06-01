@@ -40,14 +40,15 @@ class AssetListAdapter(
         private val titleTextView: TextView = itemView.findViewById(R.id.tv_asset_title)
         private val assetImageView: ImageView = itemView.findViewById(R.id.iv_asset_image)
         private val descriptionTextView: TextView = itemView.findViewById(R.id.tv_asset_description)
-        private val priceTextView: TextView = itemView.findViewById(R.id.tv_asset_price)
-        private val dateTextView: TextView = itemView.findViewById(R.id.tv_asset_date)
+        private val initialPriceTextView: TextView = itemView.findViewById(R.id.tv_asset_initial_price)
+        private val finalPriceTextView: TextView = itemView.findViewById(R.id.tv_asset_final_price)
+        private val dateTextView: TextView = itemView.findViewById(R.id.tv_asset_purchased_date)
 
         fun bind(assetResponse: AssetResponse) {
             titleTextView.text = assetResponse.title
             assetImageView.setImageFromUrl(context, assetResponse.image)
             descriptionTextView.text = assetResponse.description
-            priceTextView.text = assetResponse.price.toString()
+            initialPriceTextView.text = assetResponse.price.toString()
             dateTextView.text = assetResponse.date
         }
     }
