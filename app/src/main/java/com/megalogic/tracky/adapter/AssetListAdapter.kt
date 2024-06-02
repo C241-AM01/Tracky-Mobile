@@ -1,17 +1,17 @@
 package com.megalogic.tracky.adapter
 
+import DateTimeFormat
 import android.content.Context
+import android.graphics.Paint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.megalogic.tracky.R
 import com.megalogic.tracky.data.asset.AssetResponse
+import com.megalogic.tracky.databinding.ItemAssetBinding
 import com.megalogic.tracky.utils.setImageFromUrl
 import android.widget.Filter
 import android.widget.Filterable
+import com.megalogic.tracky.utils.PriceFormat
 import java.util.Locale
 
 class AssetListAdapter(
@@ -22,8 +22,8 @@ class AssetListAdapter(
     private var assetResponsesFiltered: List<AssetResponse> = assetResponses
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AssetViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_asset, parent, false)
-        return AssetViewHolder(view)
+        val binding = ItemAssetBinding.inflate(LayoutInflater.from(context), parent, false)
+        return AssetViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: AssetViewHolder, position: Int) {
@@ -35,20 +35,21 @@ class AssetListAdapter(
         return assetResponsesFiltered.size
     }
 
-    inner class AssetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        private val titleTextView: TextView = itemView.findViewById(R.id.tv_asset_title)
-        private val assetImageView: ImageView = itemView.findViewById(R.id.iv_asset_image)
-        private val descriptionTextView: TextView = itemView.findViewById(R.id.tv_asset_description)
-        private val priceTextView: TextView = itemView.findViewById(R.id.tv_asset_price)
-        private val dateTextView: TextView = itemView.findViewById(R.id.tv_asset_date)
-
+    inner class AssetViewHolder(private val binding: ItemAssetBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(assetResponse: AssetResponse) {
-            titleTextView.text = assetResponse.title
-            assetImageView.setImageFromUrl(context, assetResponse.image)
-            descriptionTextView.text = assetResponse.description
-            priceTextView.text = assetResponse.price.toString()
-            dateTextView.text = assetResponse.date
+            with(binding) {
+                tvTrackerId.text = assetResponse.trackerId.toString()
+                tvAssetTitle.text = assetResponse.title
+                ivAssetImage.setImageFromUrl(context, assetResponse.image)
+                tvAssetDescription.text = assetResponse.description
+                tvAssetInitialPrice.apply {
+                    text = PriceFormat.getFormattedPrice(assetResponse.initialPrice)
+                    paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                }
+                tvAssetFinalPrice.text = PriceFormat.getFormattedPrice(assetResponse.finalPrice)
+                tvAssetPurchasedDate.text = DateTimeFormat.formatCustomDate(assetResponse.date)
+                tvDepreciation.text = PriceFormat.getFormattedDepreciation(assetResponse.depreciation)
+            }
         }
     }
 

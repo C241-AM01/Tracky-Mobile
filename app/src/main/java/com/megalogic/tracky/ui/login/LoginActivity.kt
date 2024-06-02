@@ -17,7 +17,8 @@ import com.megalogic.tracky.ui.admin.AdminMainActivity
 import com.megalogic.tracky.ui.register.RegisterActivity
 import com.megalogic.tracky.ui.role.RoleActivity
 
-class LoginActivity : AppCompatActivity() {
+class
+LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var firebaseAuth: FirebaseAuth
 
