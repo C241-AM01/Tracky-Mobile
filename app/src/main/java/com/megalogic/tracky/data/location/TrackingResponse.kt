@@ -8,5 +8,6 @@ data class TrackingResponse(
     val tracker_id: Int,
     val lat: String,
     val lon: String,
-    val timestamp: String
-):Parcelable
+    val timestamp: String,
+    val asset_name: String
+): Parcelable

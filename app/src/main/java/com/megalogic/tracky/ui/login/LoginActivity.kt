@@ -12,8 +12,10 @@ import com.megalogic.tracky.MainActivity
 import com.megalogic.tracky.R
 import com.megalogic.tracky.databinding.ActivityLoginBinding
 import com.megalogic.tracky.databinding.ActivityRegisterBinding
+import com.megalogic.tracky.ui.addasset.AddAssetActivity
 import com.megalogic.tracky.ui.admin.AdminMainActivity
 import com.megalogic.tracky.ui.register.RegisterActivity
+import com.megalogic.tracky.ui.role.RoleActivity
 
 class
 LoginActivity : AppCompatActivity() {
@@ -28,7 +30,7 @@ LoginActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.btnRegister.setOnClickListener{
-            val intent = Intent(this, AdminMainActivity::class.java)
+            val intent = Intent(this, RoleActivity::class.java)
             startActivity(intent)
         }
 

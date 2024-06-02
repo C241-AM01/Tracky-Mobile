@@ -39,13 +39,13 @@
 
 
             <TextView
-                android:id="@+id/button"
+                android:id="@+id/btn_change"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginBottom="3dp"
                 android:text="change"
-                app:layout_constraintBottom_toTopOf="@+id/tv_tracker_asset"
+                app:layout_constraintBottom_toTopOf="@+id/tv_asset_name"
                 app:layout_constraintStart_toEndOf="@+id/tv_tracker"
                 app:layout_constraintTop_toBottomOf="@+id/iv_bottom_sheet"
                 app:layout_constraintVertical_bias="1.0" />
@@ -59,12 +59,12 @@
                 android:text="Tracker 1"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/tv_tracker_asset"
+                app:layout_constraintBottom_toTopOf="@id/tv_asset_name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iv_bottom_sheet" />
 
             <TextView
-                android:id="@+id/tv_tracker_asset"
+                android:id="@+id/tv_asset_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -83,9 +83,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_bottom_sheet"
                 tools:listitem="@layout/item_history_tracking" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </FrameLayout>
 
