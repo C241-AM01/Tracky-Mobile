@@ -10,6 +10,7 @@ import com.megalogic.tracky.databinding.ItemAssetBinding
 import com.megalogic.tracky.utils.setImageFromUrl
 import android.widget.Filter
 import android.widget.Filterable
+import com.megalogic.tracky.utils.PriceFormat
 import java.util.Locale
 
 class AssetListAdapter(
@@ -41,10 +42,10 @@ class AssetListAdapter(
                 ivAssetImage.setImageFromUrl(context, assetResponse.image)
                 tvAssetDescription.text = assetResponse.description
                 tvAssetInitialPrice.apply {
-                    text = assetResponse.getFormattedInitialPrice()
+                    text = PriceFormat.getFormattedInitialPrice(assetResponse.initialPrice)
                     paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 }
-                tvAssetFinalPrice.text = assetResponse.getFormattedFinalPrice()
+                tvAssetFinalPrice.text = PriceFormat.getFormattedFinalPrice(assetResponse.finalPrice)
                 tvAssetPurchasedDate.text = assetResponse.date
             }
         }

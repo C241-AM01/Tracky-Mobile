@@ -14,18 +14,4 @@ data class AssetResponse(
     val initialPrice: Int,
     val finalPrice: Int,
     val date: String
-) : Parcelable {
-
-    fun getFormattedInitialPrice(): String {
-        return formatPrice(initialPrice)
-    }
-
-    fun getFormattedFinalPrice(): String {
-        return formatPrice(finalPrice)
-    }
-
-    private fun formatPrice(price: Int): String {
-        val format = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
-        return format.format(price)
-    }
-}
+) : Parcelable
