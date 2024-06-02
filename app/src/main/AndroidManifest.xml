@@ -24,19 +24,6 @@
                     />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".ui.user.UserMainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.pic.PICMainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.role.RoleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.addasset.AddAssetActivity"
-            android:exported="false" />
         <activity
             android:name=".ui.user.UserMainActivity"
             android:exported="false" />
