@@ -11,6 +11,7 @@ data class AssetResponse(
     val title: String,
     val image: String,
     val description: String,
+    val depreciation: Int,
     val initialPrice: Int,
     val finalPrice: Int,
     val date: String

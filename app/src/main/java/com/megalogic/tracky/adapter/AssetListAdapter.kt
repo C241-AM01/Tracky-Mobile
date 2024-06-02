@@ -42,11 +42,12 @@ class AssetListAdapter(
                 ivAssetImage.setImageFromUrl(context, assetResponse.image)
                 tvAssetDescription.text = assetResponse.description
                 tvAssetInitialPrice.apply {
-                    text = PriceFormat.getFormattedInitialPrice(assetResponse.initialPrice)
+                    text = PriceFormat.getFormattedPrice(assetResponse.initialPrice)
                     paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 }
-                tvAssetFinalPrice.text = PriceFormat.getFormattedFinalPrice(assetResponse.finalPrice)
+                tvAssetFinalPrice.text = PriceFormat.getFormattedPrice(assetResponse.finalPrice)
                 tvAssetPurchasedDate.text = assetResponse.date
+                tvDepreciation.text = PriceFormat.getFormattedDepreciation(assetResponse.depreciation)
             }
         }
     }
