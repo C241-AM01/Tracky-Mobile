@@ -47,6 +47,7 @@
                         app:layout_constraintBottom_toBottomOf="@id/iv_asset_image"
                         android:background="@drawable/depreciation_status_asset_list">
                         <TextView
+                            android:id="@+id/tv_depreciation"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/depreciation_amount"

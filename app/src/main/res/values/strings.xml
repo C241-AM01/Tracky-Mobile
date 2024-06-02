@@ -14,7 +14,7 @@
     <string name="asset_description">Asset Description</string>
     <string name="asset_final_price">Rp100.000</string>
     <string name="asset_initial_price"><strike>Rp120.000</strike></string>
-    <string name="asset_depreciation_time">-2</string>
+    <string name="asset_depreciation_time">-1</string>
     <string name="asset_depreciation_period">Days</string>
     <string name="purchased_on">Purchased on</string>
     <string name="purchase_date">01–01–2024</string>
