@@ -9,7 +9,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="128dp"
+        android:layout_height="wrap_content"
         app:strokeWidth="0dp"
         app:cardBackgroundColor="@color/container"
         app:cardCornerRadius="16dp"
@@ -32,8 +32,8 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/iv_asset_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"

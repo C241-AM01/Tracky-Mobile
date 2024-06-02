@@ -9,7 +9,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--    Asset List  -->
-    <string name="depreciation_amount">-Rp0/time</string>
+    <string name="depreciation_amount">-Rp5000/day</string>
     <string name="asset_title">Asset Title</string>
     <string name="asset_description">Asset Description</string>
     <string name="asset_final_price">Rp100.000</string>
