@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
@@ -27,6 +28,7 @@ class LiveTrackingFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var viewModel: LiveTrackingViewModel
     private lateinit var googleMap: GoogleMap
+    private var currentTrackerId = 1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +41,7 @@ class LiveTrackingFragment : Fragment() {
         setupBottomSheet()
         setupRecyclerView()
         setupMap()
+        setupChangeButton()
 
         return binding.root
     }
@@ -51,11 +54,7 @@ class LiveTrackingFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        val adapter = TrackingListAdapter(requireContext(), DummyDataTracking.trackingData.map {
-            TrackingResponse(it["tracker_id"] as Int, it["lat"] as String, it["lon"] as String, it["timestamp"] as String)
-        })
-        binding.rvHistoryLocation.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvHistoryLocation.adapter = adapter
+        updateRecyclerView(currentTrackerId)
     }
 
     private fun setupMap() {
@@ -63,7 +62,7 @@ class LiveTrackingFragment : Fragment() {
         supportMapFragment.getMapAsync { map ->
             googleMap = map
             configureUiSettings(googleMap)
-            drawPolylineAndMarkersFromDummyData()
+            drawPolylineAndMarkersFromDummyData(currentTrackerId)
         }
     }
 
@@ -80,8 +79,16 @@ class LiveTrackingFragment : Fragment() {
         }
     }
 
-    private fun drawPolylineAndMarkersFromDummyData() {
-        val locationHistory = DummyDataTracking.locationHistory
+    private fun drawPolylineAndMarkersFromDummyData(trackerId: Int) {
+        val locationHistory = DummyDataTracking.locationHistory.filter {
+            DummyDataTracking.trackingData.find { data ->
+                data["tracker_id"] == trackerId &&
+                        data["lat"] == it.latitude.toString() &&
+                        data["lon"] == it.longitude.toString()
+            } != null
+        }
+
+        googleMap.clear()
         val polylineOptions = PolylineOptions()
             .addAll(locationHistory)
             .color(Color.BLUE)
@@ -96,21 +103,55 @@ class LiveTrackingFragment : Fragment() {
             googleMap.addMarker(
                 MarkerOptions()
                     .position(origin)
-                    .title("Origin: ${origin.latitude}, ${origin.longitude}")
+                    .title("Origin: %.5f, %.5f".format(origin.latitude, origin.longitude))
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
             )
 
             googleMap.addMarker(
                 MarkerOptions()
                     .position(destination)
-                    .title("Destination: ${destination.latitude}, ${destination.longitude}")
+                    .title("Destination: %.5f, %.5f".format(destination.latitude, destination.longitude))
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
             )
 
             // Move camera to show the whole route
             val boundsBuilder = LatLngBounds.Builder()
             boundsBuilder.include(origin)
             boundsBuilder.include(destination)
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 100))
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 400))
         }
+    }
+
+
+    private fun setupChangeButton() {
+        val trackerIds = DummyDataTracking.trackingData.map { it["tracker_id"] as Int }.distinct()
+        var currentIndex = trackerIds.indexOf(currentTrackerId)
+
+        binding.btnChange.setOnClickListener {
+            currentIndex = (currentIndex + 1) % trackerIds.size
+            currentTrackerId = trackerIds[currentIndex]
+            updateTrackerInfo(currentTrackerId)
+            updateRecyclerView(currentTrackerId)
+            drawPolylineAndMarkersFromDummyData(currentTrackerId)
+        }
+    }
+
+
+    private fun updateTrackerInfo(trackerId: Int) {
+        val trackerData = DummyDataTracking.trackingData.find { it["tracker_id"] == trackerId }
+        trackerData?.let {
+            binding.tvTracker.text = "Tracker $trackerId"
+            binding.tvAssetName.text = it["asset_name"] as String
+        }
+    }
+
+    private fun updateRecyclerView(trackerId: Int) {
+        val filteredData = DummyDataTracking.trackingData.filter { it["tracker_id"] == trackerId }
+        val adapter = TrackingListAdapter(requireContext(), filteredData.map {
+            TrackingResponse(it["tracker_id"] as Int, it["lat"] as String, it["lon"] as String, it["timestamp"] as String, it["asset_name"] as String)
+        })
+        binding.rvHistoryLocation.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvHistoryLocation.adapter = adapter
     }
 
     override fun onDestroyView() {
