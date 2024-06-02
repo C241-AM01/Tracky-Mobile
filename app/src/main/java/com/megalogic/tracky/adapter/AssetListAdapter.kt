@@ -1,5 +1,6 @@
 package com.megalogic.tracky.adapter
 
+import DateTimeFormat
 import android.content.Context
 import android.graphics.Paint
 import android.view.LayoutInflater
@@ -46,7 +47,7 @@ class AssetListAdapter(
                     paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 }
                 tvAssetFinalPrice.text = PriceFormat.getFormattedPrice(assetResponse.finalPrice)
-                tvAssetPurchasedDate.text = assetResponse.date
+                tvAssetPurchasedDate.text = DateTimeFormat.formatCustomDate(assetResponse.date)
                 tvDepreciation.text = PriceFormat.getFormattedDepreciation(assetResponse.depreciation)
             }
         }

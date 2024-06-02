@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.megalogic.tracky.R
 import com.megalogic.tracky.data.location.TrackingResponse
-import com.megalogic.tracky.utils.DateTimeFormat
 
 class TrackingListAdapter(
     private val context: Context,
