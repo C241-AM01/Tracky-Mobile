@@ -1,10 +1,7 @@
 package com.megalogic.tracky.ui.admin
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -12,7 +9,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.megalogic.tracky.R
 import com.megalogic.tracky.databinding.ActivityAdminMainBinding
-import com.megalogic.tracky.databinding.ActivityMainBinding
 
 class AdminMainActivity : AppCompatActivity() {
 
@@ -32,7 +28,7 @@ class AdminMainActivity : AppCompatActivity() {
             setOf(
                 R.id.navigation_home,
                 R.id.navigation_assetlist,
-                R.id.navigation_notifications,
+                R.id.navigation_asset_request,
                 R.id.navigation_livetracking
             )
         )

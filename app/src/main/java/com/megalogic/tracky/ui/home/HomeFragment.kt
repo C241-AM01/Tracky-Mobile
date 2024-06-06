@@ -1,5 +1,6 @@
 package com.megalogic.tracky.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.megalogic.tracky.adapter.AssetListAdapter
 import com.megalogic.tracky.data.asset.AssetResponse
 import com.megalogic.tracky.data.asset.DummyData
 import com.megalogic.tracky.databinding.FragmentHomeBinding
+import com.megalogic.tracky.ui.detail.DetailActivity
 
 class HomeFragment : Fragment() {
 
@@ -32,7 +34,12 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Setup RecyclerView
-        assetAdapter = AssetListAdapter(requireContext(), assetList)
+        assetAdapter = AssetListAdapter(requireContext(), assetList) { asset ->
+            // Handle item click
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("asset", asset)
+            startActivity(intent)
+        }
         binding.rvAsset.layoutManager = LinearLayoutManager(context)
         binding.rvAsset.adapter = assetAdapter
 
