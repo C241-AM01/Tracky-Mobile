@@ -1,5 +1,6 @@
 package com.megalogic.tracky.ui.assetlist
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,13 +12,13 @@ import com.megalogic.tracky.adapter.AssetListAdapter
 import com.megalogic.tracky.data.asset.AssetResponse
 import com.megalogic.tracky.data.asset.DummyData
 import com.megalogic.tracky.databinding.FragmentAssetListBinding
+import com.megalogic.tracky.ui.addasset.AddAssetActivity
+import com.megalogic.tracky.ui.detail.DetailActivity
 
 class AssetListFragment : Fragment() {
 
     private var _binding: FragmentAssetListBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var assetAdapter: AssetListAdapter
     private var assetList: List<AssetResponse> = DummyData.itemAsset
@@ -35,7 +36,12 @@ class AssetListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Setup RecyclerView
-        assetAdapter = AssetListAdapter(requireContext(), assetList)
+        assetAdapter = AssetListAdapter(requireContext(), assetList) { asset ->
+            // Handle item click
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("asset", asset)
+            startActivity(intent)
+        }
         binding.rvAsset.layoutManager = LinearLayoutManager(context)
         binding.rvAsset.adapter = assetAdapter
 
@@ -51,6 +57,12 @@ class AssetListFragment : Fragment() {
                 return true
             }
         })
+
+        // Setup FAB click listener
+        binding.fabAddAsset.setOnClickListener {
+            val intent = Intent(context, AddAssetActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroyView() {

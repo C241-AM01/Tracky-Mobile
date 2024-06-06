@@ -10,6 +10,7 @@ import android.content.Intent
 import android.os.Handler
 import com.megalogic.tracky.MainActivity
 import com.megalogic.tracky.databinding.ActivitySplashBinding
+import com.megalogic.tracky.ui.login.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
     private val splashTimeOut: Long = 3000
@@ -21,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         Handler().postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }, splashTimeOut)
     }

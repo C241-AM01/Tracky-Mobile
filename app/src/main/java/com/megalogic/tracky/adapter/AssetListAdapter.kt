@@ -1,6 +1,5 @@
 package com.megalogic.tracky.adapter
 
-import DateTimeFormat
 import android.content.Context
 import android.graphics.Paint
 import android.view.LayoutInflater
@@ -16,7 +15,8 @@ import java.util.Locale
 
 class AssetListAdapter(
     private val context: Context,
-    private var assetResponses: List<AssetResponse>
+    private var assetResponses: List<AssetResponse>,
+    private val onItemClick: (AssetResponse) -> Unit
 ) : RecyclerView.Adapter<AssetListAdapter.AssetViewHolder>(), Filterable {
 
     private var assetResponsesFiltered: List<AssetResponse> = assetResponses
@@ -31,9 +31,7 @@ class AssetListAdapter(
         holder.bind(assetResponse)
     }
 
-    override fun getItemCount(): Int {
-        return assetResponsesFiltered.size
-    }
+    override fun getItemCount(): Int = assetResponsesFiltered.size
 
     inner class AssetViewHolder(private val binding: ItemAssetBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(assetResponse: AssetResponse) {
@@ -49,6 +47,11 @@ class AssetListAdapter(
                 tvAssetFinalPrice.text = PriceFormat.getFormattedPrice(assetResponse.finalPrice)
                 tvAssetPurchasedDate.text = DateTimeFormat.formatCustomDate(assetResponse.date)
                 tvDepreciation.text = PriceFormat.getFormattedDepreciation(assetResponse.depreciation)
+
+                // Set item click listener
+                root.setOnClickListener {
+                    onItemClick(assetResponse)
+                }
             }
         }
     }
