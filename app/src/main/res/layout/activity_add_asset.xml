@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@android:drawable/ic_menu_gallery" />
+        android:src="@android:drawable/ic_menu_gallery" />
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -155,10 +155,10 @@
                 android:textColorHighlight="@color/accent">
 
             </com.google.android.material.textfield.TextInputEditText>
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
+            android:id="@+id/depreciation_form"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -219,6 +219,12 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+<!--                 <Spinner
+                    android:id="@+id/spinner_depreciation_rate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </com.google.android.material.textfield.TextInputLayout> -->
         </LinearLayout>
 
 
@@ -245,7 +251,6 @@
                 android:textColorHighlight="@color/accent">
 
             </com.google.android.material.textfield.TextInputEditText>
-
         </com.google.android.material.textfield.TextInputLayout>
 <!--        <Spinner-->
 <!--            android:id="@+id/sCountry"-->
@@ -262,7 +267,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/fab_add_image"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:padding="6dp"

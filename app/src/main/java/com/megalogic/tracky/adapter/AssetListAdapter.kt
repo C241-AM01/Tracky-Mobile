@@ -1,29 +1,29 @@
 package com.megalogic.tracky.adapter
 
 import android.content.Context
+import android.graphics.Paint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.megalogic.tracky.R
 import com.megalogic.tracky.data.asset.AssetResponse
+import com.megalogic.tracky.databinding.ItemAssetBinding
 import com.megalogic.tracky.utils.setImageFromUrl
 import android.widget.Filter
 import android.widget.Filterable
+import com.megalogic.tracky.utils.PriceFormat
 import java.util.Locale
 
 class AssetListAdapter(
     private val context: Context,
-    private var assetResponses: List<AssetResponse>
+    private var assetResponses: List<AssetResponse>,
+    private val onItemClick: (AssetResponse) -> Unit
 ) : RecyclerView.Adapter<AssetListAdapter.AssetViewHolder>(), Filterable {
 
     private var assetResponsesFiltered: List<AssetResponse> = assetResponses
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AssetViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_asset, parent, false)
-        return AssetViewHolder(view)
+        val binding = ItemAssetBinding.inflate(LayoutInflater.from(context), parent, false)
+        return AssetViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: AssetViewHolder, position: Int) {
@@ -31,25 +31,28 @@ class AssetListAdapter(
         holder.bind(assetResponse)
     }
 
-    override fun getItemCount(): Int {
-        return assetResponsesFiltered.size
-    }
+    override fun getItemCount(): Int = assetResponsesFiltered.size
 
-    inner class AssetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        private val titleTextView: TextView = itemView.findViewById(R.id.tv_asset_title)
-        private val assetImageView: ImageView = itemView.findViewById(R.id.iv_asset_image)
-        private val descriptionTextView: TextView = itemView.findViewById(R.id.tv_asset_description)
-        private val initialPriceTextView: TextView = itemView.findViewById(R.id.tv_asset_initial_price)
-        private val finalPriceTextView: TextView = itemView.findViewById(R.id.tv_asset_final_price)
-        private val dateTextView: TextView = itemView.findViewById(R.id.tv_asset_purchased_date)
-
+    inner class AssetViewHolder(private val binding: ItemAssetBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(assetResponse: AssetResponse) {
-            titleTextView.text = assetResponse.title
-            assetImageView.setImageFromUrl(context, assetResponse.image)
-            descriptionTextView.text = assetResponse.description
-            initialPriceTextView.text = assetResponse.price.toString()
-            dateTextView.text = assetResponse.date
+            with(binding) {
+                tvTrackerId.text = assetResponse.trackerId.toString()
+                tvAssetTitle.text = assetResponse.title
+                ivAssetImage.setImageFromUrl(context, assetResponse.image)
+                tvAssetDescription.text = assetResponse.description
+                tvAssetInitialPrice.apply {
+                    text = PriceFormat.getFormattedPrice(assetResponse.initialPrice)
+                    paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                }
+                tvAssetFinalPrice.text = PriceFormat.getFormattedPrice(assetResponse.finalPrice)
+                tvAssetPurchasedDate.text = DateTimeFormat.formatCustomDate(assetResponse.date)
+                tvDepreciation.text = PriceFormat.getFormattedDepreciation(assetResponse.depreciation)
+
+                // Set item click listener
+                root.setOnClickListener {
+                    onItemClick(assetResponse)
+                }
+            }
         }
     }
 

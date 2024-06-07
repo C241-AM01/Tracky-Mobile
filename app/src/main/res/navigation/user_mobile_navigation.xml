@@ -2,26 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
-
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.megalogic.tracky.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+    android:id="@+id/user_mobile_navigation"
+    app:startDestination="@+id/navigation_assetlist">
 
     <fragment
         android:id="@+id/navigation_assetlist"
         android:name="com.megalogic.tracky.ui.assetlist.AssetListFragment"
         android:label="@string/title_asset_list"
         tools:layout="@layout/fragment_asset_list" />
-
-    <fragment
-        android:id="@+id/navigation_assetreq"
-        android:name="com.megalogic.tracky.assetreq.AssetRequestFragment"
-        android:label="@string/title_assetreq"
-        tools:layout="@layout/fragment_asset_request" />
 
     <fragment
         android:id="@+id/navigation_livetracking"
