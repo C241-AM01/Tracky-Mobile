@@ -12,8 +12,10 @@
         android:id="@+id/iv_asset_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@android:drawable/ic_menu_gallery" />
@@ -23,7 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_asset_image">
@@ -31,87 +32,232 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        >
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="280dp"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Asset name" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_asset_name"
+                android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:hint="TID" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="12dp"
+                app:boxStrokeColor="@drawable/email_icon_color"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusTopStart="12dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_add_asset_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:hint="@string/add_asset_name"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    android:textColorHint="@color/accent"
+                    android:textColorHighlight="@color/accent">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_tracker_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:boxStrokeColor="@drawable/email_icon_color"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusTopStart="12dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/input_asset_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_add_tracker_id"
+                    android:layout_width="89dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:hint="@string/add_tracker_id"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    android:textColorHint="@color/accent"
+                    android:textColorHighlight="@color/accent">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </LinearLayout>
 
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_asset_desc"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@drawable/email_icon_color"
+            android:layout_marginTop="8dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_add_asset_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Description" />
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:hint="@string/add_asset_description"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:textColorHint="@color/accent"
+                android:textColorHighlight="@color/accent">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_asset_price"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@drawable/email_icon_color"
+            android:layout_marginTop="8dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_add_asset_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Price" />
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:hint="@string/add_asset_price"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:textColorHint="@color/accent"
+                android:textColorHighlight="@color/accent">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="-3dp"
+            >
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="250dp"
-                android:layout_height="match_parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Depreciation" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_asset_depreciation"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="12dp"
+                    app:boxStrokeColor="@drawable/email_icon_color"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_add_asset_depreciation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/plus_jakarta_sans"
+                        android:hint="@string/add_asset_depreciation"
+                        android:textCursorDrawable="@drawable/custom_cursor"
+                        android:textColorHint="@color/accent"
+                        android:textColorHighlight="@color/accent">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_depreciation_period"
+                    android:layout_width="89dp"
+                    android:layout_height="match_parent"
+
+                    app:layout_constraintStart_toEndOf="@id/input_asset_depreciation"
+                    app:layout_constraintTop_toTopOf="@id/input_asset_depreciation"
+                    app:layout_constraintBottom_toBottomOf="@id/input_asset_depreciation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    >
+
+                    <Spinner
+                        android:id="@+id/dd_depreciation_period"
+                        android:fontFamily="@font/plus_jakarta_sans"
+                        android:layout_width="95dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
 
+
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_purchase_date"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@drawable/email_icon_color"
+            android:layout_marginTop="8dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_add_purchase_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Purchased date" />
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:hint="@string/add_asset_date"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:textColorHint="@color/accent"
+                android:textColorHighlight="@color/accent">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
         </com.google.android.material.textfield.TextInputLayout>
+<!--        <Spinner-->
+<!--            android:id="@+id/sCountry"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/dropdown_outline"-->
+<!--            android:popupBackground="@drawable/blue_outline_white_background"-->
+<!--            android:spinnerMode="dropdown"-->
+<!--            tools:listitem="@layout/item_country"-->
+<!--        />-->
+
+
 
     </LinearLayout>
 
@@ -123,20 +269,26 @@
         android:layout_marginEnd="-10dp"
         android:layout_marginBottom="-10dp"
         android:background="@drawable/circle_bg"
-        android:src="@drawable/ic_edit_black_24"
+        android:src="@drawable/ic_edit_white_24"
         app:layout_constraintEnd_toEndOf="@id/iv_asset_image"
         app:layout_constraintBottom_toBottomOf="@id/iv_asset_image" />
 
     <Button
-        android:id="@+id/btn_add"
-        android:layout_width="match_parent"
+        android:id="@+id/btn_login"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Asset"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginBottom="20dp"
+        android:height="50dp"
+        android:width="380dp"
+        android:textSize="16sp"
+        android:backgroundTint="@color/accent"
+        android:fontFamily="@font/plus_jakarta_sans"
+        android:text="@string/add_asset"
+        android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout1"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

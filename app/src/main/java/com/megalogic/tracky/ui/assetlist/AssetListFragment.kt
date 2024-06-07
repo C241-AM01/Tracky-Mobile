@@ -1,5 +1,6 @@
 package com.megalogic.tracky.ui.assetlist
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import com.megalogic.tracky.adapter.AssetListAdapter
 import com.megalogic.tracky.data.asset.AssetResponse
 import com.megalogic.tracky.data.asset.DummyData
 import com.megalogic.tracky.databinding.FragmentAssetListBinding
+import com.megalogic.tracky.ui.addasset.AddAssetActivity
 
 class AssetListFragment : Fragment() {
 
@@ -51,6 +53,12 @@ class AssetListFragment : Fragment() {
                 return true
             }
         })
+
+        // Setup FAB click listener
+        binding.fabAddAsset.setOnClickListener {
+            val intent = Intent(requireContext(), AddAssetActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroyView() {

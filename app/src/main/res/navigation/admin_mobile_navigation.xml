@@ -18,10 +18,10 @@
         tools:layout="@layout/fragment_asset_list" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.megalogic.tracky.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_assetreq"
+        android:name="com.megalogic.tracky.assetreq.AssetRequestFragment"
+        android:label="@string/title_assetreq"
+        tools:layout="@layout/fragment_asset_request" />
     
     <fragment
         android:id="@+id/navigation_livetracking"

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    android:paddingTop="16dp"
+    android:background="@color/white"
+    tools:context=".assetreq.AssetRequestFragment">
+
+    <TextView
+        android:id="@+id/tv_asset_req_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_assetreq"
+        android:fontFamily="@font/plus_jakarta_sans"
+        android:textStyle="bold"
+        android:textSize="30sp" />
+
+    <SearchView
+        android:id="@+id/sv_asset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_asset"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_asset_request" />
+</LinearLayout>

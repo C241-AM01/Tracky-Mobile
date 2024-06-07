@@ -1,15 +1,21 @@
 <resources>
     <string name="app_name">Tracky</string>
-    <string name="title_home">Home</string>
-    <string name="title_asset_list">Asset List</string>
-    <string name="title_live_tracking">Live Tracking</string>
-    <string name="title_notifications">Notifications</string>
     <string name="title_activity_maps">MapsActivity</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--    Bottom Nav Bar      -->
+    <string name="title_live_tracking">Live Tracking</string>
+    <string name="title_assetreq">Asset Request</string>
+    <string name="title_home">Home</string>
+    <string name="title_asset_list">Asset List</string>
+
+
     <!--    Asset List  -->
-    <string name="depreciation_amount">-Rp5000/day</string>
+    <string name="depreciation_amount">Rp5000</string>
+    <string name="depreciation_minus">-</string>
+    <string name="depreciation_slash">/</string>
     <string name="asset_title">Asset Title</string>
     <string name="asset_description">Asset Description</string>
     <string name="asset_final_price">Rp100.000</string>
@@ -23,6 +29,7 @@
     <string name="truck_icon">Truck con</string>
     <string name="truck_id">123</string>
     <string name="ic_truck_id">Truck icon</string>
+    <string name="add_asset">Add Asset</string>
 
 
     <!--    Login   -->
@@ -43,5 +50,17 @@
     <string name="delivery_stat">Delivery</string>
     <string name="delivery_amount">0</string>
     <string name="ongoing_activity">Ongoing Activity</string>
+
+    <!--    ADMIN: Asset Request      -->
+    <string name="accept_asset">Accept asset</string>
+    <string name="reject_asset">Reject asset</string>
+
+    <!--    Add Asset   -->
+    <string name="add_asset_name">Asset name</string>
+    <string name="add_asset_description">Description</string>
+    <string name="add_asset_price">Price</string>
+    <string name="add_asset_depreciation">Depreciation</string>
+    <string name="add_asset_date">Purchase date</string>
+    <string name="add_tracker_id">Tracker ID</string>
 
 </resources>

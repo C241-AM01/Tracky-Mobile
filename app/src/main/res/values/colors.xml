@@ -8,12 +8,19 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="colorPrimary">#FFF5F0</color>
+    <color name="colorPrimaryVariant">#FFDFD0</color>
+
+
     <color name="accent">#FC5200</color>
     <color name="outline">#757375</color>
     <color name="surface">#F5F5F5</color>
     <color name="depreciation">#DC3823</color>
     <color name="disable">#717171</color>
     <color name="container">#F4F2EE</color>
+    <color name="icon_disable">#3B4446</color>
+    <color name="accept">#5D865D</color>
+    <color name="reject">#E2473D</color>
 
 
 </resources>
