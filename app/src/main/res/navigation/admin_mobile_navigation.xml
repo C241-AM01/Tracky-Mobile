@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/admin_mobile_navigation"
+    android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
     <fragment
@@ -18,11 +18,11 @@
         tools:layout="@layout/fragment_asset_list" />
 
     <fragment
-        android:id="@+id/navigation_asset_request"
-        android:name="com.megalogic.tracky.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
-    
+        android:id="@+id/navigation_assetreq"
+        android:name="com.megalogic.tracky.assetreq.AssetRequestFragment"
+        android:label="@string/title_assetreq"
+        tools:layout="@layout/fragment_asset_request" />
+
     <fragment
         android:id="@+id/navigation_livetracking"
         android:name="com.megalogic.tracky.ui.livetracking.LiveTrackingFragment"

@@ -58,6 +58,8 @@ dependencies {
     implementation (libs.glide)
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.fragment.ktx)
     annotationProcessor (libs.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -66,7 +68,6 @@ dependencies {
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.car.ui.lib)
-
 
 }
 

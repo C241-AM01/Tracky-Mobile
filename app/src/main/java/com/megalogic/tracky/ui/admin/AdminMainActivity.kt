@@ -28,7 +28,7 @@ class AdminMainActivity : AppCompatActivity() {
             setOf(
                 R.id.navigation_home,
                 R.id.navigation_assetlist,
-                R.id.navigation_asset_request,
+                R.id.navigation_assetreq,
                 R.id.navigation_livetracking
             )
         )

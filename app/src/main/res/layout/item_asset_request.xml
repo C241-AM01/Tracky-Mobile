@@ -148,93 +148,54 @@
                 android:layout_marginBottom="10dp"
                 />
 
-            <TextView
-                android:id="@+id/tv_asset_initial_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/plus_jakarta_sans"
-                android:text="@string/asset_initial_price"
-                android:textColor="@color/disable"
-                android:textSize="11sp"
-                app:layout_constraintBottom_toTopOf="@+id/tv_asset_final_price"
-                app:layout_constraintStart_toEndOf="@+id/card_image_asset" />
-
-            <TextView
-                android:id="@+id/tv_asset_depreciation_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/plus_jakarta_sans"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:text="@string/asset_depreciation_time"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/accent"
-                app:layout_constraintStart_toEndOf="@+id/tv_asset_initial_price"
-                app:layout_constraintBottom_toTopOf="@+id/tv_asset_final_price"
-                />
-
-            <TextView
-                android:id="@+id/tv_asset_depreciation_period"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/plus_jakarta_sans"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:text="@string/asset_depreciation_period"
-                android:layout_marginStart="3dp"
-                android:textColor="@color/accent"
-                app:layout_constraintStart_toEndOf="@+id/tv_asset_depreciation_time"
-                app:layout_constraintBottom_toTopOf="@+id/tv_asset_final_price"
-                />
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:strokeWidth="0dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="4dp"
-                android:layout_marginEnd="8dp"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/accept_button"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:backgroundTint="@color/accept"
+                app:icon="@drawable/ic_check_accept"
+                app:iconTint="@color/white"
+                app:iconSize="24dp"
+                android:ellipsize="end"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:maxLines="1"
+                app:cornerRadius="4dp"
+                app:iconGravity="top"
+                android:paddingHorizontal="3dp"
+                android:paddingVertical="6dp"
                 android:layout_marginBottom="10dp"
-                app:strokeColor="@color/disable"
-                >
+                android:contentDescription="@string/accept_asset"
+                app:layout_constraintEnd_toStartOf="@id/reject_button"
+                app:layout_constraintBottom_toBottomOf="@id/tv_asset_final_price"
+                app:layout_constraintTop_toTopOf="@id/tv_asset_final_price"
+                android:layout_marginEnd="6dp"
+                style="@style/Widget.MaterialComponents.Button.Icon" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="4dp"
-                    android:paddingHorizontal="8dp">
-                    <TextView
-                        android:id="@+id/purchased_on"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="9sp"
-                        android:fontFamily="@font/plus_jakarta_sans"
-                        android:textColor="@color/disable"
-                        android:text="@string/purchased_on"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
-                    <TextView
-                        android:id="@+id/tv_asset_purchased_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/disable"
-                        android:fontFamily="@font/plus_jakarta_sans"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/reject_button"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:backgroundTint="@color/reject"
+                app:icon="@drawable/ic_cross_reject"
+                app:iconTint="@color/white"
+                app:iconSize="22dp"
+                android:ellipsize="end"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:maxLines="1"
+                app:cornerRadius="4dp"
+                app:iconGravity="top"
+                android:paddingHorizontal="3dp"
+                android:paddingVertical="7dp"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="@string/accept_asset"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/tv_asset_final_price"
+                app:layout_constraintTop_toTopOf="@id/tv_asset_final_price"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.MaterialComponents.Button.Icon" />
 
-                        android:text="@string/purchase_date"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/purchased_on"
-                        />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_tracker_id"

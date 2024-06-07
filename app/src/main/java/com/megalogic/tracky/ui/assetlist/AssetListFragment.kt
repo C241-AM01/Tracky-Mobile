@@ -60,7 +60,9 @@ class AssetListFragment : Fragment() {
 
         // Setup FAB click listener
         binding.fabAddAsset.setOnClickListener {
-            val intent = Intent(context, AddAssetActivity::class.java)
+            val intent = Intent(requireContext(), AddAssetActivity::class.java)
+//             val intent = Intent(context, AddAssetActivity::class.java)
+
             startActivity(intent)
         }
     }
