@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_assetlist"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_asset_list" />
+
+    <item
+        android:id="@+id/navigation_livetracking"
+        android:icon="@drawable/ic_location_black_24dp"
+        android:title="@string/title_live_tracking" />
+
+</menu>
