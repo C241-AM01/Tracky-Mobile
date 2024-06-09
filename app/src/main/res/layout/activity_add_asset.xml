@@ -8,17 +8,37 @@
     android:layout_margin="16dp"
     tools:context=".ui.addasset.AddAssetActivity">
 
-    <ImageView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/iv_asset_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@android:drawable/ic_menu_gallery" />
+        app:strokeColor="@color/accent"
+        >
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            tools:srcCompat="@tools:sample/avatars"
+            />
+    </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:id="@+id/floatingActionButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:padding="6dp"
+        android:layout_marginEnd="-10dp"
+        android:layout_marginBottom="-10dp"
+        android:background="@drawable/circle_bg"
+        android:src="@drawable/ic_edit_white_24"
+        app:layout_constraintEnd_toEndOf="@id/iv_asset_image"
+        app:layout_constraintBottom_toBottomOf="@id/iv_asset_image" />
+
+
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -193,9 +213,7 @@
                         android:textCursorDrawable="@drawable/custom_cursor"
                         android:textColorHint="@color/accent"
                         android:textColorHighlight="@color/accent">
-
                     </com.google.android.material.textfield.TextInputEditText>
-
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -208,7 +226,6 @@
                     app:layout_constraintBottom_toBottomOf="@id/input_asset_depreciation"
                     app:layout_constraintEnd_toEndOf="parent"
                     >
-
                     <Spinner
                         android:id="@+id/dd_depreciation_period"
                         android:fontFamily="@font/plus_jakarta_sans"
@@ -216,11 +233,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
                 </com.google.android.material.textfield.TextInputLayout>
-
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </LinearLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_purchase_date"
@@ -233,7 +247,6 @@
             app:boxCornerRadiusBottomStart="12dp"
             app:boxCornerRadiusTopStart="12dp"
             >
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_add_purchase_date"
                 android:layout_width="match_parent"
@@ -245,33 +258,9 @@
                 android:textColorHighlight="@color/accent">
 
             </com.google.android.material.textfield.TextInputEditText>
-
         </com.google.android.material.textfield.TextInputLayout>
-<!--        <Spinner-->
-<!--            android:id="@+id/sCountry"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@drawable/dropdown_outline"-->
-<!--            android:popupBackground="@drawable/blue_outline_white_background"-->
-<!--            android:spinnerMode="dropdown"-->
-<!--            tools:listitem="@layout/item_country"-->
-<!--        />-->
-
-
 
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/floatingActionButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:padding="6dp"
-        android:layout_marginEnd="-10dp"
-        android:layout_marginBottom="-10dp"
-        android:background="@drawable/circle_bg"
-        android:src="@drawable/ic_edit_white_24"
-        app:layout_constraintEnd_toEndOf="@id/iv_asset_image"
-        app:layout_constraintBottom_toBottomOf="@id/iv_asset_image" />
 
     <Button
         android:id="@+id/btn_login"
