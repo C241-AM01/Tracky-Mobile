@@ -46,7 +46,7 @@ class AssetListAdapter(
                 }
                 tvAssetFinalPrice.text = PriceFormat.getFormattedPrice(assetResponse.finalPrice)
                 tvAssetPurchasedDate.text = DateTimeFormat.formatCustomDate(assetResponse.date)
-                tvDepreciation.text = PriceFormat.getFormattedDepreciation(assetResponse.depreciation)
+//                depreciationAmout.text = PriceFormat.getFormattedDepreciation(assetResponse.depreciation)
 
                 // Set item click listener
                 root.setOnClickListener {

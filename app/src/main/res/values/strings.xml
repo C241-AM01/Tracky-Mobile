@@ -65,4 +65,12 @@
     <string name="add_asset_date">Purchase date</string>
     <string name="add_tracker_id">Tracker ID</string>
 
+    <!--    Live Tracking Page      -->
+    <string name="tracker_name">Tracker 1</string>
+    <string name="tracker_vehicle_name">Suzuki Carry Xtra</string>
+    <string name="tracker_change">change</string>
+    <string name="tracker_date">01 Jan</string>
+    <string name="tracker_time">10:45</string>
+    <string name="tracker_longitude">Long. 104,52</string>
+    <string name="tracker_latitude">Lat. 0,936946</string>
 </resources>

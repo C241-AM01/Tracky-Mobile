@@ -48,7 +48,7 @@ class LiveTrackingFragment : Fragment() {
 
     private fun setupBottomSheet() {
         BottomSheetBehavior.from(binding.bottomSheet).apply {
-            peekHeight = 100
+            peekHeight = 250
             state = BottomSheetBehavior.STATE_COLLAPSED
         }
     }
@@ -141,7 +141,7 @@ class LiveTrackingFragment : Fragment() {
         val trackerData = DummyDataTracking.trackingData.find { it["tracker_id"] == trackerId }
         trackerData?.let {
             binding.tvTracker.text = "Tracker $trackerId"
-            binding.tvAssetName.text = it["asset_name"] as String
+            binding.tvVehicleName.text = it["asset_name"] as String
         }
     }
 

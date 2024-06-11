@@ -19,7 +19,7 @@ class AdminMainActivity : AppCompatActivity() {
         binding = ActivityAdminMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        val navView: BottomNavigationView = binding.adminNavView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
@@ -32,7 +32,7 @@ class AdminMainActivity : AppCompatActivity() {
                 R.id.navigation_livetracking
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
         getActionBar()?.hide();
