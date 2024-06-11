@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_asset_list" />
 
     <fragment
+        android:id="@+id/navigation_scanqr"
+        android:name="com.megalogic.tracky.ui.scanqr.ScanQrFragment"
+        android:label="@string/title_scan_qr"
+        tools:layout="@layout/fragment_scan_qr" />
+
+    <fragment
         android:id="@+id/navigation_livetracking"
         android:name="com.megalogic.tracky.ui.livetracking.LiveTrackingFragment"
         android:label="@string/title_live_tracking"
