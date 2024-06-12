@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiClient {
     private const val BASE_URL = "http://localhost:3000/"
 
-    private var retrofit: Retrofit? = null
+    var retrofit: Retrofit? = null
 
     fun getClient(): Retrofit {
         if (retrofit == null) {

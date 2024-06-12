@@ -8,13 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.megalogic.tracky.data.asset.AssetResponse
 import com.megalogic.tracky.databinding.ActivityDetailBinding
 import com.megalogic.tracky.utils.setImageFromUrl
-import android.widget.Filter
-import android.widget.Filterable
 import com.megalogic.tracky.utils.PriceFormat
-import java.util.Locale
+
 class DetailAdapter(
-private val context: Context,
-private val assetResponse: AssetResponse
+    private val context: Context,
+    private val assetResponse: AssetResponse
 ) : RecyclerView.Adapter<DetailAdapter.DetailViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailViewHolder {
@@ -27,6 +25,7 @@ private val assetResponse: AssetResponse
     }
 
     override fun getItemCount(): Int = 1
+
     inner class DetailViewHolder(private val binding: ActivityDetailBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(assetResponse: AssetResponse) {
             with(binding) {

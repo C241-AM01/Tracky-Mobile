@@ -11,13 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.megalogic.tracky.adapter.AssetListAdapter
 import com.megalogic.tracky.data.asset.AssetResponse
 import com.megalogic.tracky.data.asset.DummyData
-import com.megalogic.tracky.databinding.FragmentAssetListBinding
+import com.megalogic.tracky.databinding.FragmentAdminAssetListBinding
 import com.megalogic.tracky.ui.addasset.AddAssetActivity
+import com.megalogic.tracky.ui.detail.AdminDetailAssetFragment
 import com.megalogic.tracky.ui.detail.DetailActivity
 
-class AssetListFragment : Fragment() {
+class AdminAssetListFragment : Fragment() {
 
-    private var _binding: FragmentAssetListBinding? = null
+    private var _binding: FragmentAdminAssetListBinding? = null
 
     private val binding get() = _binding!!
     private lateinit var assetAdapter: AssetListAdapter
@@ -28,7 +29,7 @@ class AssetListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAssetListBinding.inflate(inflater, container, false)
+        _binding = FragmentAdminAssetListBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginHorizontal="16dp"
-    tools:context=".ui.detail.DetailActivity">
+    tools:context=".ui.detail.AdminDetailAssetFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_image_asset"
@@ -276,7 +276,7 @@
         app:iconSize="20dp"
         android:text="@string/asset_scan_qr"
         android:textColor="@color/black"
-        android:textSize="14dp"
+        android:textSize="14sp"
         app:iconTint="@color/black"
         android:fontFamily="@font/plus_jakarta_sans"
         android:textStyle="bold"

@@ -6,6 +6,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="close">Close</string>
 
     <!--    Bottom Nav Bar      -->
     <string name="title_live_tracking">Live Tracking</string>
@@ -75,6 +76,14 @@
     <string name="tracker_time">10:45</string>
     <string name="tracker_longitude">Long. 104,52</string>
     <string name="tracker_latitude">Lat. 0,936946</string>
+
+    <!--  Depreciation Period  -->
+    <string-array name="depreciation_period_array">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+         </string-array>
 
 <!--    USER: Scan QR       -->
     <string name="title_scan_qr">Scan QR</string>

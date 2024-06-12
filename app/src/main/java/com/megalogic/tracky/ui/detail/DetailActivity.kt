@@ -1,66 +1,42 @@
 package com.megalogic.tracky.ui.detail
 
+import android.graphics.Paint
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
-import com.megalogic.tracky.R
+import com.megalogic.tracky.data.asset.AssetResponse
 import com.megalogic.tracky.databinding.ActivityDetailBinding
-import androidx.activity.viewModels
-import androidx.lifecycle.Observer
-import com.megalogic.tracky.utils.setImageFromUrl
 import com.megalogic.tracky.utils.PriceFormat
-//import com.megalogic.tracky.utils.DateTimeFormat
+import com.megalogic.tracky.utils.setImageFromUrl
 
 class DetailActivity : AppCompatActivity() {
 
-//    private lateinit var viewModel: DetailViewModel
-//    private var _binding: ActivityDetailBinding? = null
-//    private val binding get() = _binding
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
-//        val asset = arguments?.getString("username")
-//        viewModel.fetchAssetDetail(assetId!!)
-//        observeViewModel()
-//    }
-//
-//    private fun observeViewModel() {
-//        viewModel.assetDetail.observe(viewLifecycleOwner) { userDetail ->
-//            userDetail?.also { detail ->
-//                restartContent(detail)
-//            }
-//        }
-//    }
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        val binding = ActivityDetailBinding.inflate(inflater, container, false)
-//        _binding = binding
-//        return binding.root
-//    }
-//
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        clearBinding()
-//    }
+    private lateinit var binding: ActivityDetailBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_detail)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+//        val assetResponse: AssetResponse
+//        assetResponse = intent.getParcelableExtra("asset_response")
+//
+//        assetResponse?.let {
+//            bindData(it)
+//        }
     }
+
+//    private fun bindData(assetResponse: AssetResponse) {
+//        with(binding) {
+//            tvTrackerId.text = assetResponse.trackerId.toString()
+//            tvAssetTitle.text = assetResponse.title
+//            ivAssetImage.setImageFromUrl(this@DetailActivity, assetResponse.image)
+//            tvAssetDescription.text = assetResponse.description
+//            tvAssetInitialPrice.apply {
+//                text = PriceFormat.getFormattedPrice(assetResponse.initialPrice)
+//                paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+//            }
+//            tvAssetFinalPrice.text = PriceFormat.getFormattedPrice(assetResponse.finalPrice)
+//            tvAssetPurchasedDate.text = DateTimeFormat.formatCustomDate(assetResponse.date)
+//        }
+//    }
 }
