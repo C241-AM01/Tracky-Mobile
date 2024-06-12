@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
+    android:layout_gravity="center"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:cardCornerRadius="20dp"
@@ -28,24 +28,18 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_close"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:icon="@drawable/ic_cross_reject"
-        app:iconSize="20dp"
-        app:iconTint="@color/black"
-        app:iconGravity="end|start"
+    <ImageButton
+        android:id="@+id/btn_toolbar_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_cross_black"
         android:backgroundTint="@color/white"
-        android:ellipsize="end"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:maxLines="1"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tv_asset_title"
         app:layout_constraintBottom_toBottomOf="@id/tv_asset_title"
         />
+
 
     <ImageView
         android:id="@+id/iv_qr_image"

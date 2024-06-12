@@ -87,4 +87,8 @@
 
 <!--    USER: Scan QR       -->
     <string name="title_scan_qr">Scan QR</string>
+
+<!--    Detail Asset    -->
+    <string name="title_detail_asset">Detail Asset</string>
+
 </resources>
