@@ -5,218 +5,291 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
+    android:background="@color/white"
     tools:context=".ui.addasset.AddAssetActivity">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/iv_asset_image"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbar_add_asset"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingHorizontal="-16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:minHeight="?attr/actionBarSize">
+
+            <ImageButton
+                android:id="@+id/iv_toolbar_back"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_back_black"
+                android:backgroundTint="@color/white"
+                android:scaleType="centerCrop"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+                android:gravity="center_vertical"
+                android:text="@string/add_asset"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="@color/accent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_add_asset"
         >
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:contentDescription="@string/add_asset"
-            tools:srcCompat="@tools:sample/avatars"
-            />
-    </com.google.android.material.card.MaterialCardView>
 
-    <ImageView
-        android:id="@+id/floatingActionButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:padding="6dp"
-        android:layout_marginEnd="-10dp"
-        android:layout_marginBottom="-10dp"
-        android:background="@drawable/circle_bg"
-        android:src="@drawable/ic_edit_white_24"
-        android:contentDescription="@string/add_asset"
-        app:layout_constraintEnd_toEndOf="@id/iv_asset_image"
-        app:layout_constraintBottom_toBottomOf="@id/iv_asset_image" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_asset_image">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_asset_name"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/iv_asset_image"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/add_asset_name"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            android:fontFamily="@font/plus_jakarta_sans"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/accent"
-            app:shapeAppearance="@style/Rounded">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/plus_jakarta_sans"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_tracker_id"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/add_tracker_id"
-            android:layout_marginTop="8dp"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/accent"
-            app:shapeAppearance="@style/Rounded"
-            android:fontFamily="@font/plus_jakarta_sans"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_asset_name"
+            app:strokeWidth="2dp"
+            app:strokeColor="@color/accent"
+            app:cardCornerRadius="15dp"
             >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/plus_jakarta_sans"
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:contentDescription="@string/add_asset"
+                tools:srcCompat="@tools:sample/avatars"
                 />
+        </com.google.android.material.card.MaterialCardView>
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_asset_desc"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/add_asset_description"
-            android:layout_marginTop="8dp"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/accent"
-            app:shapeAppearance="@style/Rounded"
-            android:fontFamily="@font/plus_jakarta_sans"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_asset_name"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/plus_jakarta_sans"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_asset_price"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/add_asset_price"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/accent"
-            app:shapeAppearance="@style/Rounded"
-            android:fontFamily="@font/plus_jakarta_sans"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_asset_name"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/plus_jakarta_sans"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_edit_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="6dp"
+            android:layout_marginEnd="-10dp"
+            android:layout_marginBottom="-10dp"
+            app:backgroundTint="@color/colorPrimaryVariant"
+            android:layout_gravity="bottom|end"
+            android:src="@drawable/ic_edit_white_24"
+            app:iconTint="@color/white"
+            app:iconSize="10dp"
+            android:contentDescription="@string/add_asset"
+            app:layout_constraintEnd_toEndOf="@id/iv_asset_image"
+            app:layout_constraintBottom_toBottomOf="@id/iv_asset_image" />
 
         <LinearLayout
-            android:id="@+id/depreciation_form"
+            android:id="@+id/form_add_asset"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_asset_image">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_asset_depreciation"
+                android:id="@+id/input_asset_name"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="260dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/add_asset_depreciation"
+                android:hint="@string/add_asset_name"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:fontFamily="@font/plus_jakarta_sans"
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/accent"
                 app:shapeAppearance="@style/Rounded">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_tracker_id"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_tracker_id"
+                android:layout_marginTop="8dp"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/accent"
+                app:shapeAppearance="@style/Rounded"
+                android:fontFamily="@font/plus_jakarta_sans"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_asset_name"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_tracker_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_description"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_asset_description"
+                android:layout_marginTop="8dp"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/accent"
+                app:shapeAppearance="@style/Rounded"
+                android:fontFamily="@font/plus_jakarta_sans"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_asset_name"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_original_price"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/add_asset_price"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/accent"
+                app:shapeAppearance="@style/Rounded"
+                android:fontFamily="@font/plus_jakarta_sans"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_asset_name"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_original_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/form_depreciation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_depreciation_value"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_asset_depreciation"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/accent"
+                    app:shapeAppearance="@style/Rounded">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_depreciation_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_depreciation_rate"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp">
+
+                    <Spinner
+                        android:id="@+id/spinner_depreciation_period"
+                        android:layout_width="95dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/plus_jakarta_sans" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_purchase_date"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_asset_date"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/accent"
+                android:layout_marginTop="8dp"
+                app:shapeAppearance="@style/Rounded">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_purchase_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_depreciation_period"
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp">
-
-                <Spinner
-                    android:id="@+id/dd_depreciation_period"
-                    android:layout_width="95dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/plus_jakarta_sans" />
-            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_purchase_date"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/add_asset_date"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/accent"
-            android:layout_marginTop="8dp"
-            app:shapeAppearance="@style/Rounded">
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
         android:layout_marginBottom="20dp"
-        android:height="50dp"
-        android:width="380dp"
-        android:textSize="16sp"
-        android:backgroundTint="@color/accent"
-        android:fontFamily="@font/plus_jakarta_sans"
-        android:text="@string/add_asset"
-        android:textStyle="bold"
-        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        >
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="6dp"
+            android:textSize="14sp"
+            android:textAllCaps="true"
+            android:backgroundTint="@color/accent"
+            android:fontFamily="@font/plus_jakarta_sans"
+            android:text="@string/add_asset"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:cornerRadius="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

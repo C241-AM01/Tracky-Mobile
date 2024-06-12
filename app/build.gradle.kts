@@ -16,8 +16,11 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
@@ -60,6 +63,8 @@ dependencies {
     implementation (libs.converter.gson)
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.play.services.vision.common)
+    implementation(libs.play.services.vision)
     annotationProcessor (libs.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

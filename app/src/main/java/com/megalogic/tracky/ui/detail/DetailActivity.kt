@@ -1,21 +1,42 @@
 package com.megalogic.tracky.ui.detail
 
+import android.graphics.Paint
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.megalogic.tracky.R
+import com.megalogic.tracky.data.asset.AssetResponse
+import com.megalogic.tracky.databinding.ActivityDetailBinding
+import com.megalogic.tracky.utils.PriceFormat
+import com.megalogic.tracky.utils.setImageFromUrl
 
 class DetailActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityDetailBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_detail)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+//        val assetResponse: AssetResponse
+//        assetResponse = intent.getParcelableExtra("asset_response")
+//
+//        assetResponse?.let {
+//            bindData(it)
+//        }
     }
+
+//    private fun bindData(assetResponse: AssetResponse) {
+//        with(binding) {
+//            tvTrackerId.text = assetResponse.trackerId.toString()
+//            tvAssetTitle.text = assetResponse.title
+//            ivAssetImage.setImageFromUrl(this@DetailActivity, assetResponse.image)
+//            tvAssetDescription.text = assetResponse.description
+//            tvAssetInitialPrice.apply {
+//                text = PriceFormat.getFormattedPrice(assetResponse.initialPrice)
+//                paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+//            }
+//            tvAssetFinalPrice.text = PriceFormat.getFormattedPrice(assetResponse.finalPrice)
+//            tvAssetPurchasedDate.text = DateTimeFormat.formatCustomDate(assetResponse.date)
+//        }
+//    }
 }

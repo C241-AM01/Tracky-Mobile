@@ -19,18 +19,19 @@ class UserMainActivity : AppCompatActivity() {
         binding = ActivityUserMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        val navView: BottomNavigationView = binding.userNavView
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val navController = findNavController(R.id.nav_host_fragment_activity_user_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_assetlist,
+                R.id.navigation_scanqr,
                 R.id.navigation_livetracking
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
         getActionBar()?.hide();

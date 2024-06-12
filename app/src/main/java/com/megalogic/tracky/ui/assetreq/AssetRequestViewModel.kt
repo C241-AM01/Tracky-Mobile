@@ -1,4 +1,4 @@
-package com.megalogic.tracky.assetreq
+package com.megalogic.tracky.ui.assetreq
 
 import androidx.lifecycle.ViewModel
 

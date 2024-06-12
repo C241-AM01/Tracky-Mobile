@@ -6,6 +6,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="close">Close</string>
 
     <!--    Bottom Nav Bar      -->
     <string name="title_live_tracking">Live Tracking</string>
@@ -23,7 +24,7 @@
     <string name="asset_final_price">Rp100.000</string>
     <string name="asset_initial_price"><strike>Rp120.000</strike></string>
     <string name="asset_depreciation_time">-1</string>
-    <string name="asset_depreciation_period">Days</string>
+    <string name="asset_depreciation_period">days</string>
     <string name="purchased_on">Purchased on</string>
     <string name="purchase_date">01–01–2024</string>
     <string name="img_asset">Asset Image</string>
@@ -32,7 +33,9 @@
     <string name="truck_id">123</string>
     <string name="ic_truck_id">Truck icon</string>
     <string name="add_asset">Add Asset</string>
-
+<string name="asset_scan_qr">QR</string>
+<string name="edit_asset">Edit Asset</string>
+<string name="delete_asset">Delete Asset</string>
 
     <!--    Login   -->
     <string name="login">Login</string>
@@ -65,4 +68,23 @@
     <string name="add_asset_date">Purchase date</string>
     <string name="add_tracker_id">Tracker ID</string>
 
+    <!--    Live Tracking Page      -->
+    <string name="tracker_name">Tracker 1</string>
+    <string name="tracker_vehicle_name">Suzuki Carry Xtra</string>
+    <string name="tracker_change">change</string>
+    <string name="tracker_date">01 Jan</string>
+    <string name="tracker_time">10:45</string>
+    <string name="tracker_longitude">Long. 104,52</string>
+    <string name="tracker_latitude">Lat. 0,936946</string>
+
+    <!--  Depreciation Period  -->
+    <string-array name="depreciation_period_array">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+         </string-array>
+
+<!--    USER: Scan QR       -->
+    <string name="title_scan_qr">Scan QR</string>
 </resources>

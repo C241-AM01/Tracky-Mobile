@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/main_toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:minHeight="?attr/actionBarSize">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+                android:gravity="center_vertical"
+                android:text="@string/title_home"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <fragment
         android:id="@+id/nav_host_fragment_activity_main"
@@ -15,7 +42,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_toolbar"
         app:navGraph="@navigation/admin_mobile_navigation" />
 
     <com.google.android.material.card.MaterialCardView
@@ -38,7 +65,7 @@
         >
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/nav_view"
+            android:id="@+id/admin_nav_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleX="0.95"

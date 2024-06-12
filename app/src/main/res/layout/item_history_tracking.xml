@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clipToPadding="false"
-    android:paddingVertical="8dp">
+    android:paddingVertical="4dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -37,17 +37,22 @@
                         android:id="@+id/tv_datestamp_history"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="11 Nov"
+                        android:fontFamily="@font/plus_jakarta_sans"
+                        android:text="@string/tracker_date"
                         android:textSize="12sp"
+                        android:textColor="@color/black"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tv_timestamp_history"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="14:16"
+                        android:text="@string/tracker_time"
+                        android:fontFamily="@font/plus_jakarta_sans"
                         android:textSize="12sp"
+                        android:textColor="@color/black"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_datestamp_history"
@@ -60,20 +65,24 @@
                 android:id="@+id/tv_longitude_history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Long. 104,52"
+                android:text="@string/tracker_longitude"
+                android:layout_marginEnd="30dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/plus_jakarta_sans"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tv_latitude_history"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_latitude_history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="124dp"
-                android:text="Lat. 0,936946"
+                android:layout_marginEnd="35dp"
+                android:text="@string/tracker_latitude"
+                android:textColor="@color/black"
+                android:fontFamily="@font/plus_jakarta_sans"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+                app:layout_constraintEnd_toStartOf="@id/tv_longitude_history"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
