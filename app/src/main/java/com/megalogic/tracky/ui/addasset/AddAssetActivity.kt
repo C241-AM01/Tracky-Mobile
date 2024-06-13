@@ -15,9 +15,7 @@ class AddAssetActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddAssetBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.ivToolbarBack.setOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
-        }
+
         setupDepreciationSpinner()
         setActions()
     }

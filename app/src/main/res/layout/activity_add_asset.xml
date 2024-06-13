@@ -24,7 +24,7 @@
             android:minHeight="?attr/actionBarSize">
 
             <ImageButton
-                android:id="@+id/iv_toolbar_back"
+                android:id="@+id/btn_toolbar_back"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:src="@drawable/ic_back_black"
