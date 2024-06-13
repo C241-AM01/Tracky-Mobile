@@ -33,9 +33,9 @@
     <string name="truck_id">123</string>
     <string name="ic_truck_id">Truck icon</string>
     <string name="add_asset">Add Asset</string>
-<string name="asset_scan_qr">QR</string>
-<string name="edit_asset">Edit Asset</string>
-<string name="delete_asset">Delete Asset</string>
+    <string name="asset_scan_qr">QR</string>
+    <string name="edit_asset">Edit Asset</string>
+    <string name="delete_asset">Delete Asset</string>
 
     <!--    LoginModel   -->
     <string name="login">Login</string>
@@ -46,6 +46,8 @@
     <string name="register">Register</string>
     <string name="already_have_an_account">Already have an account? </string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="logout">Logout</string>
+
 
     <!--   Home    -->
     <string name="hello">Hello, </string>
@@ -83,8 +85,9 @@
         <item>Weekly</item>
         <item>Monthly</item>
         <item>Yearly</item>
-         </string-array>
+         
+    </string-array>
 
-<!--    USER: Scan QR       -->
+    <!--    USER: Scan QR       -->
     <string name="title_scan_qr">Scan QR</string>
 </resources>
