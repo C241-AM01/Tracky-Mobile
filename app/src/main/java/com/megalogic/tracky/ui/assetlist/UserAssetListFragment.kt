@@ -1,26 +1,27 @@
-package com.megalogic.tracky.ui.home
+package com.megalogic.tracky.ui.assetlist
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.megalogic.tracky.R
 import com.megalogic.tracky.adapter.AssetListAdapter
 import com.megalogic.tracky.data.PreferenceManager
 import com.megalogic.tracky.data.asset.AssetResponse
 import com.megalogic.tracky.data.asset.DummyData
-import com.megalogic.tracky.databinding.FragmentHomeBinding
+import com.megalogic.tracky.databinding.FragmentUserAssetListBinding
+import com.megalogic.tracky.ui.addasset.AddAssetActivity
+import com.megalogic.tracky.ui.detail.AdminDetailAssetFragment
 import com.megalogic.tracky.ui.detail.DetailActivity
 import com.megalogic.tracky.ui.profile.ProfileActivity
 import com.megalogic.tracky.utils.JWTDecoder
 
-class HomeFragment : Fragment() {
+class UserAssetListFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentUserAssetListBinding? = null
     private lateinit var preferenceManager: PreferenceManager
 
     private val binding get() = _binding!!
@@ -32,7 +33,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentUserAssetListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
