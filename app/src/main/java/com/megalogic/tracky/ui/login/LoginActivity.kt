@@ -2,54 +2,68 @@ package com.megalogic.tracky.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.google.firebase.auth.FirebaseAuth
-import com.megalogic.tracky.MainActivity
-import com.megalogic.tracky.R
+import com.megalogic.tracky.data.PreferenceManager
+import com.megalogic.tracky.data.api.ApiConfig
 import com.megalogic.tracky.databinding.ActivityLoginBinding
-import com.megalogic.tracky.databinding.ActivityRegisterBinding
-import com.megalogic.tracky.ui.addasset.AddAssetActivity
 import com.megalogic.tracky.ui.admin.AdminMainActivity
-import com.megalogic.tracky.ui.register.RegisterActivity
-import com.megalogic.tracky.ui.role.RoleActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class
-LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var preferenceManager: PreferenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        firebaseAuth = FirebaseAuth.getInstance()
+        preferenceManager = PreferenceManager(this)
+        setActions()
+    }
 
-        binding.btnRegister.setOnClickListener{
-            val intent = Intent(this, RoleActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.btnLogin.setOnClickListener{
-            val email = binding.etEmail.text.toString()
-            val password = binding.etPassword.text.toString()
-
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        val intent = Intent(this, AdminMainActivity::class.java)
-                        startActivity(intent)
-                    } else {
-                        Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
-                    }
-                }
-            } else {
-                Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_SHORT).show()
+    private fun setActions() {
+        binding.apply {
+            btnRegister.setOnClickListener {
+                // Handle register click
+            }
+            btnLogin.setOnClickListener {
+                val email = inputEmail.editText?.text.toString()
+                val password = inputPassword.editText?.text.toString()
+                handleLogin(email, password)
             }
         }
+    }
+
+    private fun handleLogin(email: String, password: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = ApiConfig.getApiService().userLogin(email, password)
+                withContext(Dispatchers.Main) {
+                    Log.d("LoginActivity", "Token: ${response.token}")
+                    Toast.makeText(this@LoginActivity, "Login successful", Toast.LENGTH_SHORT).show()
+                }
+                preferenceManager.saveToken(response.token)
+                navigateToMain()
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Log.e("LoginActivity", "Login failed: ${e.message}")
+                    Toast.makeText(this@LoginActivity, "Login failed: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun navigateToMain() {
+        // Navigasi ke halaman utama berdasarkan peran pengguna
+        val intent = Intent(this, AdminMainActivity::class.java) // Ubah sesuai dengan peran pengguna
+        startActivity(intent)
+        finish()
     }
 }

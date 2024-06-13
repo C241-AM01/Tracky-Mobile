@@ -37,7 +37,7 @@
 <string name="edit_asset">Edit Asset</string>
 <string name="delete_asset">Delete Asset</string>
 
-    <!--    Login   -->
+    <!--    LoginModel   -->
     <string name="login">Login</string>
     <string name="login_title">Let\'s sign you in</string>
     <string name="login_desc">Log in to your account</string>

@@ -47,33 +47,57 @@ android {
 }
 
 dependencies {
+    // AndroidX Core libraries
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.firebase.auth)
     implementation(libs.androidx.activity)
-    implementation(libs.play.services.maps)
-    implementation (libs.glide)
-    implementation (libs.retrofit)
-    implementation (libs.converter.gson)
-    implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.fragment.ktx)
-    implementation(libs.play.services.vision.common)
-    implementation(libs.play.services.vision)
-    annotationProcessor (libs.compiler)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    implementation (libs.play.services.maps.v1820)
+    implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.core.splashscreen)
+
+    // AndroidX Lifecycle libraries
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    // AndroidX Navigation libraries
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
+    // Material Design components
+    implementation(libs.material)
+
+    // Firebase libraries
+    implementation(libs.firebase.auth)
+
+    // Google Play Services libraries
+    implementation(libs.play.services.maps)
+    implementation(libs.play.services.vision.common)
+    implementation(libs.play.services.vision)
+    // (Versi spesifik untuk Play Services Maps)
+    implementation(libs.play.services.maps.v1820)
+
+    // Glide for image loading
+    implementation(libs.glide)
+
+    // Retrofit for networking
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation (libs.okhttp)
+    implementation (libs.logging.interceptor)
+    // Car UI Library
     implementation(libs.car.ui.lib)
 
+    // Annotation processors
+    annotationProcessor(libs.compiler)
+
+    // Unit Testing libraries
+    testImplementation(libs.junit)
+
+    // Android Testing libraries
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }
 
 

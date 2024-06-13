@@ -1,29 +1,40 @@
 package com.megalogic.tracky.ui.splash
 
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.megalogic.tracky.R
 import android.content.Intent
+import android.os.Bundle
 import android.os.Handler
-import com.megalogic.tracky.MainActivity
-import com.megalogic.tracky.databinding.ActivitySplashBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.megalogic.tracky.R
+import com.megalogic.tracky.data.PreferenceManager
 import com.megalogic.tracky.ui.login.LoginActivity
+import com.megalogic.tracky.ui.admin.AdminMainActivity
 
 class SplashActivity : AppCompatActivity() {
+
     private val splashTimeOut: Long = 3000
-    private lateinit var binding: ActivitySplashBinding
+    private lateinit var preferenceManager: PreferenceManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_splash)
         supportActionBar?.hide()
 
+        preferenceManager = PreferenceManager(this)
+
         Handler().postDelayed({
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+            val token = preferenceManager.getToken()
+            if (token != null) {
+                navigateToMain()
+            } else {
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
         }, splashTimeOut)
+    }
+
+    private fun navigateToMain() {
+        val intent = Intent(this, AdminMainActivity::class.java) // Ubah sesuai dengan peran pengguna
+        startActivity(intent)
+        finish()
     }
 }
