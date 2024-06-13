@@ -21,25 +21,25 @@ class DetailAdapter(
     }
 
     override fun onBindViewHolder(holder: DetailViewHolder, position: Int) {
-        holder.bind(assetResponse)
+//        holder.bind(assetResponse)
     }
 
     override fun getItemCount(): Int = 1
 
     inner class DetailViewHolder(private val binding: ActivityDetailBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(assetResponse: AssetResponse) {
-            with(binding) {
-                tvTrackerId.text = assetResponse.trackerId.toString()
-                tvAssetTitle.text = assetResponse.title
-                ivAssetImage.setImageFromUrl(context, assetResponse.image)
-                tvAssetDescription.text = assetResponse.description
-                tvAssetInitialPrice.apply {
-                    text = PriceFormat.getFormattedPrice(assetResponse.initialPrice)
-                    paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-                }
-                tvAssetFinalPrice.text = PriceFormat.getFormattedPrice(assetResponse.finalPrice)
-                tvAssetPurchasedDate.text = DateTimeFormat.formatCustomDate(assetResponse.date)
-            }
-        }
+//        fun bind(assetResponse: AssetResponse) {
+//            with(binding) {
+//                tvTrackerId.text = assetResponse.trackerId.toString()
+//                tvAssetTitle.text = assetResponse.title
+//                ivAssetImage.setImageFromUrl(context, assetResponse.image)
+//                tvAssetDescription.text = assetResponse.description
+//                tvAssetInitialPrice.apply {
+//                    text = PriceFormat.getFormattedPrice(assetResponse.initialPrice)
+//                    paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+//                }
+//                tvAssetFinalPrice.text = PriceFormat.getFormattedPrice(assetResponse.finalPrice)
+//                tvAssetPurchasedDate.text = DateTimeFormat.formatCustomDate(assetResponse.date)
+//            }
+//        }
     }
 }

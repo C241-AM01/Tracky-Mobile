@@ -56,7 +56,7 @@
                         android:paddingStart="10dp"
                         />
                     <TextView
-                        android:id="@+id/depreciation_amount"
+                        android:id="@+id/tv_depreciation_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/depreciation_amount"
@@ -80,7 +80,7 @@
                         android:paddingBottom="6dp"
                         />
                     <TextView
-                        android:id="@+id/depreciation_period"
+                        android:id="@+id/tv_depreciation_rate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/asset_depreciation_period"
@@ -112,7 +112,7 @@
         app:layout_constraintTop_toBottomOf="@+id/card_image_asset" />
 
     <TextView
-        android:id="@+id/tv_asset_initial_price"
+        android:id="@+id/tv_asset_original_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/plus_jakarta_sans"
@@ -133,9 +133,9 @@
         android:text="@string/asset_depreciation_time"
         android:layout_marginStart="13dp"
         android:textColor="@color/accent"
-        app:layout_constraintTop_toTopOf="@id/tv_asset_initial_price"
-        app:layout_constraintStart_toEndOf="@+id/tv_asset_initial_price"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_asset_initial_price"
+        app:layout_constraintTop_toTopOf="@id/tv_asset_original_price"
+        app:layout_constraintStart_toEndOf="@+id/tv_asset_original_price"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_asset_original_price"
         />
 
     <TextView
@@ -153,7 +153,7 @@
         />
 
     <TextView
-        android:id="@+id/tv_asset_title"
+        android:id="@+id/tv_asset_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -163,7 +163,7 @@
         android:textStyle="bold"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@id/card_image_asset"
-        app:layout_constraintTop_toBottomOf="@+id/tv_asset_initial_price" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_asset_original_price" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_tracker_id"
@@ -171,8 +171,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="@id/card_image_asset"
-        app:layout_constraintTop_toTopOf="@id/tv_asset_title"
-        app:layout_constraintBottom_toBottomOf="@id/tv_asset_title">
+        app:layout_constraintTop_toTopOf="@id/tv_asset_name"
+        app:layout_constraintBottom_toBottomOf="@id/tv_asset_name">
 
         <ImageView
             android:id="@+id/ic_tracker_id"
@@ -224,7 +224,7 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@id/card_image_asset"
-        app:layout_constraintTop_toBottomOf="@+id/tv_asset_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_asset_name" />
 
     <LinearLayout
         android:id="@+id/ll_purchase_date"

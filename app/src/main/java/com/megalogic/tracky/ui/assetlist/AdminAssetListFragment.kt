@@ -37,12 +37,12 @@ class AdminAssetListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Setup RecyclerView
-        assetAdapter = AssetListAdapter(requireContext(), assetList) { asset ->
-            // Handle item click
-            val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra("asset", asset)
-            startActivity(intent)
-        }
+//        assetAdapter = AssetListAdapter(requireContext(), assetList) { asset ->
+//            // Handle item click
+//            val intent = Intent(context, DetailActivity::class.java)
+//            intent.putExtra("asset", asset)
+//            startActivity(intent)
+//        }
         binding.rvAsset.layoutManager = LinearLayoutManager(context)
         binding.rvAsset.adapter = assetAdapter
 
