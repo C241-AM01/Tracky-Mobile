@@ -7,8 +7,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.megalogic.tracky.data.PreferenceManager
 import com.megalogic.tracky.data.api.ApiConfig
+import com.megalogic.tracky.data.model.LoginRequest
 import com.megalogic.tracky.databinding.ActivityLoginBinding
 import com.megalogic.tracky.ui.admin.AdminMainActivity
+import com.megalogic.tracky.ui.pic.PICMainActivity
+import com.megalogic.tracky.ui.role.RoleActivity
+import com.megalogic.tracky.ui.user.UserMainActivity
+import com.megalogic.tracky.utils.JWTDecoder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,8 +36,10 @@ class LoginActivity : AppCompatActivity() {
     private fun setActions() {
         binding.apply {
             btnRegister.setOnClickListener {
-                // Handle register click
+                val intent = Intent(this@LoginActivity, RoleActivity::class.java)
+                startActivity(intent)
             }
+
             btnLogin.setOnClickListener {
                 val email = inputEmail.editText?.text.toString()
                 val password = inputPassword.editText?.text.toString()
@@ -44,25 +51,40 @@ class LoginActivity : AppCompatActivity() {
     private fun handleLogin(email: String, password: String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val response = ApiConfig.getApiService().userLogin(email, password)
+                val loginRequest = LoginRequest(email, password)
+                Log.d("LoginRequest", "Login attempt with email: $email & password: $password")
+
+                val response = ApiConfig.getApiService().userLogin(loginRequest)
                 withContext(Dispatchers.Main) {
-                    Log.d("LoginActivity", "Token: ${response.token}")
+                    Log.d("LoginResponse", "Token: ${response.token}")
                     Toast.makeText(this@LoginActivity, "Login successful", Toast.LENGTH_SHORT).show()
                 }
+
+                val decodedToken = JWTDecoder.decoded(response.token)
+                val role = decodedToken["role"] as String
+
                 preferenceManager.saveToken(response.token)
-                navigateToMain()
+
+                navigateBasedOnRole(role)
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    Log.e("LoginActivity", "Login failed: ${e.message}")
+                    Log.e("LoginError", "Login failed: ${e.message}")
                     Toast.makeText(this@LoginActivity, "Login failed: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
-    private fun navigateToMain() {
-        // Navigasi ke halaman utama berdasarkan peran pengguna
-        val intent = Intent(this, AdminMainActivity::class.java) // Ubah sesuai dengan peran pengguna
+    private fun navigateBasedOnRole(role: String) {
+        val intent = when (role) {
+            "admin" -> Intent(this, AdminMainActivity::class.java)
+            "pic" -> Intent(this, PICMainActivity::class.java)
+            "user" -> Intent(this, UserMainActivity::class.java)
+            else -> {
+                Toast.makeText(this, "Unknown role: $role", Toast.LENGTH_SHORT).show()
+                return
+            }
+        }
         startActivity(intent)
         finish()
     }
