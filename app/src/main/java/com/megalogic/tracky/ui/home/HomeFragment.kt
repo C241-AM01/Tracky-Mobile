@@ -52,6 +52,15 @@ class HomeFragment : Fragment() {
                 is ResultState.Success -> {
                     binding.progressBar.visibility = View.GONE
                     assetListResponse = result.data.assets as List<AssetsItem>
+                    // Setup RecyclerView
+                    assetAdapter = AssetListAdapter(requireContext(), result.data.assets) { asset ->
+                        // Handle item click
+                        val intent = Intent(context, DetailActivity::class.java)
+                        intent.putExtra("assetId", asset.id?.toInt())
+                        startActivity(intent)
+                    }
+                    binding.rvAsset.layoutManager = LinearLayoutManager(context)
+                    binding.rvAsset.adapter = assetAdapter
                 }
 
                 is ResultState.Error -> {
@@ -61,23 +70,16 @@ class HomeFragment : Fragment() {
                     viewModel.clearData()
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
+
+
                 }
 
                 is ResultState.Loading -> {
+                    Toast.makeText(context, "Loading List...", Toast.LENGTH_SHORT).show()
                     binding.progressBar.visibility = View.VISIBLE
                 }
             }
         }
-
-        // Setup RecyclerView
-        assetAdapter = AssetListAdapter(requireContext(), assetListResponse) { asset ->
-            // Handle item click
-            val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra("asset", asset)
-            startActivity(intent)
-        }
-        binding.rvAsset.layoutManager = LinearLayoutManager(context)
-        binding.rvAsset.adapter = assetAdapter
 
         // Setup SearchView
         binding.svAsset.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
