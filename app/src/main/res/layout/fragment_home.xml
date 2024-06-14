@@ -5,224 +5,270 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     android:background="@color/white"
     tools:context=".ui.home.HomeFragment" >
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/main_toolbar"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:minHeight="?attr/actionBarSize">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp">
+
+
+                <ImageView
+                    android:layout_width="69dp"
+                    android:layout_height="29dp"
+                    android:src="@drawable/logo_orange"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+                <ImageButton
+                    android:id="@+id/btn_profile_page"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_profile_black"
+                    android:padding="1dp"
+                    android:scaleType="centerCrop"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:orientation="vertical"
+
         >
-        <TextView
-            android:id="@+id/textView2"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/plus_jakarta_sans"
-            android:textColor="@color/black"
-            android:text="@string/hello"
-            android:textSize="25sp"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+
+            >
+            <TextView
+                android:id="@+id/hello"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:textColor="@color/black"
+                android:text="@string/hello"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:id="@+id/tv_role_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:textColor="@color/black"
+                android:text="@string/user_title"
+                android:layout_marginStart="6dp"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="14dp"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/home_asset_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/container"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textAlignment="textStart">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="186dp"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        >
+
+                        <TextView
+                            android:id="@+id/card_asset_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/plus_jakarta_sans"
+                            android:text="@string/asset_stat"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/icon_asset_card"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_box_outline_accent"
+                            android:layout_marginTop="10dp"
+                            app:layout_constraintTop_toBottomOf="@id/card_asset_title"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:contentDescription="@string/box_icon"
+                            />
+
+                        <TextView
+                            android:id="@+id/asset_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/plus_jakarta_sans"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:textSize="24sp"
+                            android:text="@string/asset_amount"
+                            app:layout_constraintStart_toEndOf="@id/icon_asset_card"
+                            app:layout_constraintTop_toTopOf="@id/icon_asset_card"
+                            app:layout_constraintBottom_toBottomOf="@+id/icon_asset_card"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/home_delivery_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                android:layout_marginStart="8dp"
+                app:cardBackgroundColor="@color/container"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textAlignment="textStart">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="186dp"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        >
+
+                        <TextView
+                            android:id="@+id/card_delivery_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/plus_jakarta_sans"
+                            android:text="@string/delivery_stat"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/icon_delivery_card"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_truck_outline_accent"
+                            android:layout_marginTop="10dp"
+                            app:layout_constraintTop_toBottomOf="@id/card_delivery_title"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:contentDescription="@string/truck_icon"
+                            />
+
+                        <TextView
+                            android:id="@+id/delivery_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plus_jakarta_sans"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:textSize="24sp"
+                            android:text="@string/asset_amount"
+                            app:layout_constraintStart_toEndOf="@id/icon_delivery_card"
+                            app:layout_constraintTop_toTopOf="@id/icon_delivery_card"
+                            app:layout_constraintBottom_toBottomOf="@+id/icon_delivery_card"
+                            />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/ongoing_activity"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/plus_jakarta_sans"
             android:textColor="@color/black"
-            android:text="@string/user_title"
-            android:layout_marginStart="6dp"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="24sp"
+            />
+
+        <SearchView
+            android:id="@+id/sv_asset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_asset"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            tools:listitem="@layout/item_asset" />
 
     </LinearLayout>
 
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="14dp"
-        >
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/home_asset_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardBackgroundColor="@color/container"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textAlignment="textStart">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="186dp"
-                android:layout_height="match_parent"
-                android:padding="10dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    >
-
-                    <TextView
-                        android:id="@+id/card_asset_title"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:fontFamily="@font/plus_jakarta_sans"
-                        android:text="@string/asset_stat"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/icon_asset_card"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/ic_box_outline_accent"
-                        android:layout_marginTop="4dp"
-                        app:layout_constraintTop_toTopOf="@id/asset_amount"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:contentDescription="@string/box_icon"
-                        />
-
-                    <TextView
-                        android:id="@+id/asset_amount"
-                        style="@style/TextAppearance.MaterialComponents.Body1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginBottom="6dp"
-                        android:fontFamily="@font/plus_jakarta_sans"
-
-                        android:textStyle="bold"
-                        android:textSize="24sp"
-                        android:text="@string/asset_amount"
-                        app:layout_constraintStart_toEndOf="@id/icon_asset_card"
-                        app:layout_constraintTop_toBottomOf="@id/card_asset_title" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/home_delivery_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            android:layout_marginStart="8dp"
-            app:cardBackgroundColor="@color/container"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textAlignment="textStart">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="186dp"
-                android:layout_height="match_parent"
-                android:padding="10dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    >
-
-                    <TextView
-                        android:id="@+id/card_delivery_title"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:fontFamily="@font/plus_jakarta_sans"
-                        android:text="@string/delivery_stat"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/icon_delivery_card"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_truck_outline_accent"
-                        android:layout_marginTop="4dp"
-                        app:layout_constraintTop_toTopOf="@id/delivery_amount"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:contentDescription="@string/truck_icon"
-                        />
-
-                    <TextView
-                        android:id="@+id/delivery_amount"
-                        style="@style/TextAppearance.MaterialComponents.Body1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginBottom="6dp"
-                        android:fontFamily="@font/plus_jakarta_sans"
-                        android:textStyle="bold"
-                        android:textSize="24sp"
-                        android:text="@string/asset_amount"
-                        app:layout_constraintStart_toEndOf="@id/icon_delivery_card"
-                        app:layout_constraintTop_toBottomOf="@id/card_delivery_title" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ongoing_activity"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/plus_jakarta_sans"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        />
-
-    <SearchView
-        android:id="@+id/sv_asset"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_asset"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
-        tools:listitem="@layout/item_asset" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-    </ProgressBar>
 
 </LinearLayout>

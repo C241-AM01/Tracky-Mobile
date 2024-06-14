@@ -56,9 +56,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             app:startIconDrawable="@drawable/ic_email_state"
-            app:startIconTint="@drawable/email_icon_color"
-            app:boxStrokeColor="@drawable/email_icon_color"
             app:boxCornerRadiusBottomEnd="12dp"
             app:boxCornerRadiusTopEnd="12dp"
             app:boxCornerRadiusBottomStart="12dp"
@@ -70,9 +69,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/plus_jakarta_sans"
                 android:hint="@string/email"
-                android:textCursorDrawable="@drawable/custom_cursor"
-                android:textColorHint="@color/accent"
-                android:textColorHighlight="@color/accent">
+                >
 
             </com.google.android.material.textfield.TextInputEditText>
 
@@ -83,9 +80,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             app:startIconDrawable="@drawable/ic_password_state"
-            app:startIconTint="@drawable/password_icon_color"
-            app:boxStrokeColor="@drawable/password_icon_color"
             app:boxCornerRadiusBottomEnd="12dp"
             app:boxCornerRadiusTopEnd="12dp"
             app:boxCornerRadiusBottomStart="12dp"
@@ -98,10 +94,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/plus_jakarta_sans"
                 android:hint="@string/password"
-                android:textColorHint="@color/accent"
-                android:textCursorDrawable="@drawable/custom_cursor"
-                android:textColor="@color/accent"
-                android:textColorHighlight="@color/accent">
+                >
 
             </com.google.android.material.textfield.TextInputEditText>
 
@@ -122,6 +115,7 @@
         android:text="@string/login"
         android:textStyle="bold"
         android:gravity="center"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
