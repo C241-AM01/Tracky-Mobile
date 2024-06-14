@@ -9,6 +9,8 @@ import com.megalogic.tracky.data.model.AssetsItem
 import com.megalogic.tracky.databinding.ActivityDetailBinding
 import com.megalogic.tracky.utils.setImageFromUrl
 import com.megalogic.tracky.utils.PriceFormat
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 
 class DetailAdapter(
     private val context: Context,
@@ -58,6 +60,26 @@ class DetailAdapter(
                 tvDepreciationValue.text = assetResponse.depreciationValue?.let {
                     PriceFormat.getFormattedPrice(
                         it.toInt())
+                }
+                val purchaseDate = LocalDate.parse(assetResponse.purchaseDate)
+                val today = LocalDate.now()
+                val elapsedTime = ChronoUnit.DAYS.between(purchaseDate, today)
+                val depreciationRate = when (assetResponse.depreciationRate) {
+                    "daily" -> elapsedTime
+                    "weekly" -> elapsedTime / 7
+                    "monthly" -> elapsedTime / 30
+                    "yearly" -> elapsedTime / 365
+                    else -> 0
+                }
+                tvDepreciationTime.text = depreciationRate.toString()
+
+                val depreciationValue = assetResponse.depreciationValue?.toInt()
+                val originalPrice = assetResponse.originalPrice?.toInt()
+                val currentPrice = originalPrice?.minus((depreciationValue?.times(depreciationRate)!!))
+
+
+                if (currentPrice != null) {
+                    tvCurrentPrice.text = PriceFormat.getFormattedPrice(currentPrice.toInt())
                 }
             }
         }

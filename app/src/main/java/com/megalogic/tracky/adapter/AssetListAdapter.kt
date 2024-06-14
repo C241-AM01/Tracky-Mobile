@@ -11,6 +11,8 @@ import android.widget.Filter
 import android.widget.Filterable
 import com.megalogic.tracky.data.model.AssetsItem
 import com.megalogic.tracky.utils.PriceFormat
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 import java.util.Locale
 
 class AssetListAdapter(
@@ -44,7 +46,6 @@ class AssetListAdapter(
                     text = PriceFormat.getFormattedPrice(AssetsItem.originalPrice!!.toInt())
                     paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 }
-                tvCurrentPrice.text = PriceFormat.getFormattedPrice(AssetsItem.currentPrice!!.toInt())
                 tvPurchasedDate.text = DateTimeFormat.formatCustomDate(AssetsItem.purchaseDate!!)
                 tvDepreciationRate.text = when (AssetsItem.depreciationRate) {
                     "daily" -> "Days"
@@ -66,6 +67,28 @@ class AssetListAdapter(
                     PriceFormat.getFormattedPrice(
                         it.toInt())
                 }
+
+                val purchaseDate = LocalDate.parse(AssetsItem.purchaseDate)
+                val today = LocalDate.now()
+                val elapsedTime = ChronoUnit.DAYS.between(purchaseDate, today)
+                val depreciationRate = when (AssetsItem.depreciationRate) {
+                    "daily" -> elapsedTime
+                    "weekly" -> elapsedTime / 7
+                    "monthly" -> elapsedTime / 30
+                    "yearly" -> elapsedTime / 365
+                    else -> 0
+                }
+                tvDepreciationTime.text = depreciationRate.toString()
+
+                val depreciationValue = AssetsItem.depreciationValue?.toInt()
+                val originalPrice = AssetsItem.originalPrice?.toInt()
+                val currentPrice = originalPrice?.minus((depreciationValue?.times(depreciationRate)!!))
+
+
+                if (currentPrice != null) {
+                    tvCurrentPrice.text = PriceFormat.getFormattedPrice(currentPrice.toInt())
+                }
+
 
                 // Set item click listener
                 root.setOnClickListener {
