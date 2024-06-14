@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -122,7 +123,6 @@ class LiveTrackingFragment : Fragment() {
         }
     }
 
-
     private fun setupChangeButton() {
         val trackerIds = DummyDataTracking.trackingData.map { it["tracker_id"] as Int }.distinct()
         var currentIndex = trackerIds.indexOf(currentTrackerId)
@@ -136,19 +136,23 @@ class LiveTrackingFragment : Fragment() {
         }
     }
 
-
     private fun updateTrackerInfo(trackerId: Int) {
         val trackerData = DummyDataTracking.trackingData.find { it["tracker_id"] == trackerId }
         trackerData?.let {
             binding.tvTracker.text = "Tracker $trackerId"
             binding.tvVehicleName.text = it["asset_name"] as String
+            // Load the image using Glide
+            Glide.with(this)
+                .load(it["image"] as String)
+                .into(binding.ivTrackerImage)
+            binding.tvPlatenum.text = it["platenum"] as String
         }
     }
 
     private fun updateRecyclerView(trackerId: Int) {
         val filteredData = DummyDataTracking.trackingData.filter { it["tracker_id"] == trackerId }
         val adapter = TrackingListAdapter(requireContext(), filteredData.map {
-            TrackingResponse(it["tracker_id"] as Int, it["lat"] as String, it["lon"] as String, it["timestamp"] as String, it["asset_name"] as String)
+            TrackingResponse(it["tracker_id"] as Int, it["lat"] as String, it["lon"] as String, it["timestamp"] as String, it["asset_name"] as String, it["image"] as String, it["platenum"] as String)
         })
         binding.rvHistoryLocation.layoutManager = LinearLayoutManager(requireContext())
         binding.rvHistoryLocation.adapter = adapter

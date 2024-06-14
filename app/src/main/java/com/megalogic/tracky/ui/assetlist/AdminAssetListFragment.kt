@@ -55,7 +55,6 @@ class AdminAssetListFragment : Fragment() {
             when (result) {
                 is ResultState.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    Toast.makeText(context, "Welcome..", Toast.LENGTH_SHORT).show()
                     assetListResponse = result.data.assets as List<AssetsItem>
                     // Setup RecyclerView
                     assetAdapter = AssetListAdapter(requireContext(), result.data.assets) { asset ->
