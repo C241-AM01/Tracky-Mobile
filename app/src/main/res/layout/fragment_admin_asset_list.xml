@@ -10,7 +10,6 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/main_toolbar"
-        android:paddingHorizontal="16dp"
         android:background="@color/white"
 
         android:layout_width="match_parent"

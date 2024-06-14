@@ -10,12 +10,18 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.megalogic.tracky.R
 import com.megalogic.tracky.adapter.AssetListAdapter
+import com.megalogic.tracky.utils.JWTDecoder
+import com.megalogic.tracky.ui.detail.DetailActivity
+import com.megalogic.tracky.ui.profile.ProfileActivity
+import com.megalogic.tracky.databinding.FragmentHomeBinding
+import com.megalogic.tracky.data.PreferenceManager
+import com.megalogic.tracky.data.asset.AssetResponse
+import com.megalogic.tracky.data.asset.DummyData
 import com.megalogic.tracky.data.api.ApiConfig
 import com.megalogic.tracky.data.PreferenceManager
 import com.megalogic.tracky.data.model.AssetResponse
-import com.megalogic.tracky.databinding.FragmentHomeBinding
-import com.megalogic.tracky.ui.detail.DetailActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -23,6 +29,8 @@ import kotlinx.coroutines.withContext
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
+    private lateinit var preferenceManager: PreferenceManager
+
     private val binding get() = _binding!!
     private lateinit var assetAdapter: AssetListAdapter
     private var assetList: List<AssetResponse> = listOf()
@@ -51,6 +59,32 @@ class HomeFragment : Fragment() {
                 return true
             }
         })
+
+        // Set OnClickListener for profile button
+        binding.btnProfilePage.setOnClickListener {
+            val intent = Intent(context, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Initialize preferenceManager
+        preferenceManager = PreferenceManager(requireContext())
+
+        // Display the role name
+        displayRoleName()
+    }
+
+    private fun displayRoleName() {
+        val token = preferenceManager.getToken()
+        if (token != null) {
+            val decodedToken = JWTDecoder.decoded(token)
+            val role = decodedToken["role"] as String
+            binding.tvRoleName.text = when (role) {
+                "admin" -> "Admin"
+                "pic" -> "PIC"
+                "user" -> "User"
+                else -> "Unknown"
+            }
+        }
     }
 
     private fun setupRecyclerView() {

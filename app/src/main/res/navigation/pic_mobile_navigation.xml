@@ -7,13 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_assetlist"
-        android:name="com.megalogic.tracky.ui.assetlist.AdminAssetListFragment"
+        android:name="com.megalogic.tracky.ui.assetlist.UserAssetListFragment"
         android:label="@string/title_asset_list"
-        tools:layout="@layout/fragment_admin_asset_list" />
+        tools:layout="@layout/fragment_user_asset_list" />
 
     <fragment
         android:id="@+id/navigation_asset_request"
-        android:name="com.megalogic.tracky.ui.notifications.NotificationsFragment"
+        android:name="com.megalogic.tracky.ui.assetreq.PicAssetRequestFragment"
         android:label="@string/title_asset_request"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_livetracking"
+        android:name="com.megalogic.tracky.ui.livetracking.LiveTrackingFragment"
+        android:label="@string/title_live_tracking"
+        tools:layout="@layout/fragment_live_tracking" />
 </navigation>
