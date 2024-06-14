@@ -6,6 +6,11 @@ import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.megalogic.tracky.R
 import com.megalogic.tracky.databinding.ActivityAddAssetBinding
+import android.app.DatePickerDialog
+import java.util.*
+import android.widget.Button
+import android.widget.TextView
+
 
 class AddAssetActivity : AppCompatActivity() {
 
@@ -17,6 +22,7 @@ class AddAssetActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupDepreciationSpinner()
+        pickDate()
         setActions()
     }
 
@@ -26,6 +32,40 @@ class AddAssetActivity : AppCompatActivity() {
                 handleAddAsset()
             }
         }
+    }
+
+    private fun pickDate(){
+        binding.apply{
+            btnAddAssetDate.setOnClickListener {
+
+                val c = Calendar.getInstance()
+
+                val year = c.get(Calendar.YEAR)
+                val month = c.get(Calendar.MONTH)
+                val day = c.get(Calendar.DAY_OF_MONTH)
+
+                val datePickerDialog = DatePickerDialog(
+                    // on below line we are passing context.
+                    this@AddAssetActivity,
+                    { _, year, monthOfYear, dayOfMonth ->
+                        // on below line we are setting
+                        // date to our text view.
+                        tvPickPurchaseDate.text =
+                            (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+                    },
+                    // on below line we are passing year, month
+                    // and day for the selected date in our date picker.
+                    year,
+                    month,
+                    day
+                )
+                // at last we are calling show
+                // to display our date picker dialog.
+                datePickerDialog.show()
+            }
+        }
+
+
     }
 
     private fun setupDepreciationSpinner() {

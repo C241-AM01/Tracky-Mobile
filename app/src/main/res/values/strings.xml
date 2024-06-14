@@ -69,6 +69,8 @@
     <string name="add_asset_depreciation">Depreciation</string>
     <string name="add_asset_date">Purchase date</string>
     <string name="add_tracker_id">Tracker ID</string>
+    <string name="add_date">Pick Date</string>
+    <string name="date_idle">Purchase Date</string>
 
     <!--    Live Tracking Page      -->
     <string name="tracker_name">Tracker 1</string>
@@ -91,7 +93,7 @@
     <!--    USER: Scan QR       -->
     <string name="title_scan_qr">Scan QR</string>
 
-<!--    Detail Asset    -->
+    <!--    Detail Asset    -->
     <string name="title_detail_asset">Detail Asset</string>
 
 </resources>
