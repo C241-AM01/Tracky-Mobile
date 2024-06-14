@@ -81,6 +81,8 @@
     <string name="tracker_location">Jl Sukolilo no 123</string>
     <string name="tracker_longitude">Long. 104,52</string>
     <string name="tracker_latitude">Lat. 0,936946</string>
+    <string name="tracker_plate">L 3 SK</string>
+
 
     <!--  Depreciation Period  -->
     <string-array name="depreciation_period_array">
