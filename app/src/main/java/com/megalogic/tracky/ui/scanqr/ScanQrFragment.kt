@@ -115,17 +115,14 @@ class ScanQrFragment : Fragment() {
             }
 
             override fun receiveDetections(detections: Detector.Detections<Barcode>) {
+                if (!isAdded || activity == null) {
+                    return
+                }
                 val barcodes = detections.detectedItems
                 if (barcodes.size() > 0) {
                     scannedValue = barcodes.valueAt(0).rawValue
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(scannedValue))
                     startActivity(intent)
-                    //Don't forget to add this line printing value or finishing activity must run on main thread
-//                    activity?.runOnUiThread {
-//                        cameraSource.stop()
-//                        Toast.makeText(requireContext(), "value- $scannedValue", Toast.LENGTH_SHORT).show()
-//                        activity?.finish()
-//                    }
                 } else {
                     activity?.runOnUiThread {
                         Toast.makeText(requireContext(), "Scan valid QR code", Toast.LENGTH_SHORT).show()

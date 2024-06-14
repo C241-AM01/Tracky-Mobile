@@ -57,6 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:endIconTint="@color/accent"
             app:startIconDrawable="@drawable/ic_email_state"
             app:boxCornerRadiusBottomEnd="12dp"
             app:boxCornerRadiusTopEnd="12dp"
@@ -69,6 +70,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/plus_jakarta_sans"
                 android:hint="@string/email"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:textColorHint="@color/accent"
+                android:textColorHighlight="@color/accent"
                 >
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -80,6 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            app:endIconTint="@color/accent"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             app:startIconDrawable="@drawable/ic_password_state"
             app:boxCornerRadiusBottomEnd="12dp"
@@ -94,6 +99,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/plus_jakarta_sans"
                 android:hint="@string/password"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:textColorHint="@color/accent"
+                android:textColorHighlight="@color/accent"
                 >
 
             </com.google.android.material.textfield.TextInputEditText>
