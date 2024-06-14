@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_assetlist"
+        android:icon="@drawable/nav_assetlist"
+        android:title="@string/title_asset_list" />
+
+    <item
+        android:id="@+id/navigation_asset_request"
+        android:icon="@drawable/nav_assetreq"
+        android:title="@string/title_asset_request" />
+
+    <item
+        android:id="@+id/navigation_livetracking"
+        android:icon="@drawable/nav_livetrack"
+        android:title="@string/title_live_tracking" />
+
+</menu>

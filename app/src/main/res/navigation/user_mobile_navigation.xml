@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_mobile_navigation"
+    app:startDestination="@+id/navigation_assetlist">
+
+    <fragment
+        android:id="@+id/navigation_assetlist"
+        android:name="com.megalogic.tracky.ui.assetlist.AdminAssetListFragment"
+        android:label="@string/title_asset_list"
+        tools:layout="@layout/fragment_admin_asset_list" />
+
+    <fragment
+        android:id="@+id/navigation_scanqr"
+        android:name="com.megalogic.tracky.ui.scanqr.ScanQrFragment"
+        android:label="@string/title_scan_qr"
+        tools:layout="@layout/fragment_scan_qr" />
+
+    <fragment
+        android:id="@+id/navigation_livetracking"
+        android:name="com.megalogic.tracky.ui.livetracking.LiveTrackingFragment"
+        android:label="@string/title_live_tracking"
+        tools:layout="@layout/fragment_live_tracking" />
+</navigation>
