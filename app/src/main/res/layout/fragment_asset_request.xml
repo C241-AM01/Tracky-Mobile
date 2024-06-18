@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:text="@string/title_assetreq"
         android:fontFamily="@font/plus_jakarta_sans"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="30sp" />
 
@@ -25,9 +26,19 @@
         android:layout_height="wrap_content"
         />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_asset"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_admin_asset_request" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="No Asset Request Available"
+        android:layout_gravity="center"
+        android:fontFamily="@font/plus_jakarta_sans_italic"
+
+        />
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rv_asset"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        tools:listitem="@layout/item_admin_asset_request" />-->
 </LinearLayout>

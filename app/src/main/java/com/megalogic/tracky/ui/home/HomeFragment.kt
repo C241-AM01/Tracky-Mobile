@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.megalogic.tracky.adapter.AssetListAdapter
+import com.megalogic.tracky.data.PreferenceManager
 import com.megalogic.tracky.data.ResultState
 import com.megalogic.tracky.data.ViewModelFactory
 import com.megalogic.tracky.data.asset.AssetResponse
@@ -20,10 +21,14 @@ import com.megalogic.tracky.databinding.FragmentHomeBinding
 import com.megalogic.tracky.ui.assetlist.AdminAssetListViewModel
 import com.megalogic.tracky.ui.detail.DetailActivity
 import com.megalogic.tracky.ui.login.LoginActivity
+import com.megalogic.tracky.ui.profile.ProfileActivity
+import com.megalogic.tracky.utils.JWTDecoder
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
+    private lateinit var preferenceManager: PreferenceManager
+
     private val binding get() = _binding!!
     private lateinit var assetAdapter: AssetListAdapter
     private var assetList: List<AssetResponse> = DummyData.itemAsset
@@ -79,6 +84,17 @@ class HomeFragment : Fragment() {
                     binding.progressBar.visibility = View.VISIBLE
                 }
             }
+            // Set OnClickListener for profile button
+            binding.btnProfilePage.setOnClickListener {
+                val intent = Intent(context, ProfileActivity::class.java)
+                startActivity(intent)
+            }
+
+            // Initialize preferenceManager
+            preferenceManager = PreferenceManager(requireContext())
+
+            // Display the role name
+            displayRoleName()
         }
 
         // Setup SearchView
@@ -93,6 +109,20 @@ class HomeFragment : Fragment() {
                 return true
             }
         })
+    }
+
+    private fun displayRoleName() {
+        val token = preferenceManager.getToken()
+        if (token != null) {
+            val decodedToken = JWTDecoder.decoded(token)
+            val role = decodedToken["role"] as String
+            binding.tvRoleName.text = when (role) {
+                "admin" -> "Admin"
+                "pic" -> "PIC"
+                "user" -> "User"
+                else -> "Unknown"
+            }
+        }
     }
 
     override fun onDestroyView() {

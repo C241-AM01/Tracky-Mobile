@@ -1,29 +1,39 @@
 package com.megalogic.tracky.ui.addasset
 
+import android.app.Activity
+import android.app.DatePickerDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.megalogic.tracky.R
 import com.megalogic.tracky.databinding.ActivityAddAssetBinding
-import android.app.DatePickerDialog
 import java.util.*
-import android.widget.Button
-import android.widget.TextView
-
 
 class AddAssetActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddAssetBinding
+    private lateinit var ivAssetImage: ImageView
+
+    companion object {
+        private const val REQUEST_IMAGE_PICK = 1
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddAssetBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        ivAssetImage = findViewById(R.id.iv_added_image)
+
         setupDepreciationSpinner()
         pickDate()
         setActions()
+        setupImagePicker()
     }
 
     private fun setActions() {
@@ -45,27 +55,18 @@ class AddAssetActivity : AppCompatActivity() {
                 val day = c.get(Calendar.DAY_OF_MONTH)
 
                 val datePickerDialog = DatePickerDialog(
-                    // on below line we are passing context.
                     this@AddAssetActivity,
                     { _, year, monthOfYear, dayOfMonth ->
-                        // on below line we are setting
-                        // date to our text view.
                         tvPickPurchaseDate.text =
                             (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
                     },
-                    // on below line we are passing year, month
-                    // and day for the selected date in our date picker.
                     year,
                     month,
                     day
                 )
-                // at last we are calling show
-                // to display our date picker dialog.
                 datePickerDialog.show()
             }
         }
-
-
     }
 
     private fun setupDepreciationSpinner() {
@@ -80,8 +81,24 @@ class AddAssetActivity : AppCompatActivity() {
         }
     }
 
-
     private fun handleAddAsset() {
-        // code here
+        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+        finish() // Go back to the previous activity
+    }
+
+    private fun setupImagePicker() {
+        binding.btnEditImage.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            startActivityForResult(intent, REQUEST_IMAGE_PICK)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_IMAGE_PICK && resultCode == Activity.RESULT_OK) {
+            val imageUri: Uri? = data?.data
+            ivAssetImage.setImageURI(imageUri)
+        }
     }
 }
