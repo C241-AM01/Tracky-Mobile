@@ -9,6 +9,7 @@ import com.megalogic.tracky.data.model.AssetsItem
 import com.megalogic.tracky.data.model.DecodedToken
 import com.megalogic.tracky.data.model.LoginRequest
 import com.megalogic.tracky.data.model.ResponseLogin
+import com.megalogic.tracky.data.model.TrackersItem
 import com.megalogic.tracky.utils.JWTDecoder
 
 class Repository(private val apiService: ApiService, private val context: Context) {
@@ -23,6 +24,9 @@ class Repository(private val apiService: ApiService, private val context: Contex
 
     private val _assetData = MutableLiveData<ResultState<AssetsItem>>()
     val assetData: LiveData<ResultState<AssetsItem>> = _assetData
+
+    private val _trackerData = MutableLiveData<ResultState<TrackersItem>>()
+    val trackerData: LiveData<ResultState<TrackersItem>> = _trackerData
 
     private val _decodedToken = MutableLiveData<ResultState<DecodedToken>>()
     val decodedToken: LiveData<ResultState<DecodedToken>> = _decodedToken
@@ -95,6 +99,20 @@ class Repository(private val apiService: ApiService, private val context: Contex
                 }
             } else {
                 _assetData.postValue(ResultState.Error(response.message()))
+            }
+        }
+    }
+
+    suspend fun getTrackerDetail(id: Int) {
+        _responseLogin.postValue(ResultState.Loading)
+        val token = getToken()
+        apiService.getTrackerDetail("Bearer $token", id).let { response ->
+            if (response.isSuccessful) {
+                response.body()?.let {
+                    _trackerData.postValue(ResultState.Success(it))
+                }
+            } else {
+                _trackerData.postValue(ResultState.Error(response.message()))
             }
         }
     }

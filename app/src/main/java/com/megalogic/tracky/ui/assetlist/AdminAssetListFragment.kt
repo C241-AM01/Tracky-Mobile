@@ -15,12 +15,10 @@ import com.megalogic.tracky.data.ResultState
 import com.megalogic.tracky.data.ViewModelFactory
 import com.megalogic.tracky.data.asset.AssetResponse
 import com.megalogic.tracky.data.asset.DummyData
-import com.megalogic.tracky.data.model.AssetListResponse
 import com.megalogic.tracky.data.model.AssetsItem
 import com.megalogic.tracky.databinding.FragmentAdminAssetListBinding
 import com.megalogic.tracky.ui.addasset.AddAssetActivity
-import com.megalogic.tracky.ui.detail.AdminDetailAssetFragment
-import com.megalogic.tracky.ui.detail.DetailActivity
+import com.megalogic.tracky.ui.detailasset.DetailAssetActivity
 import com.megalogic.tracky.ui.login.LoginActivity
 
 class AdminAssetListFragment : Fragment() {
@@ -59,7 +57,7 @@ class AdminAssetListFragment : Fragment() {
                     // Setup RecyclerView
                     assetAdapter = AssetListAdapter(requireContext(), result.data.assets) { asset ->
                         // Handle item click
-                        val intent = Intent(context, DetailActivity::class.java)
+                        val intent = Intent(context, DetailAssetActivity::class.java)
                         intent.putExtra("assetId", asset.id?.toInt())
                         startActivity(intent)
                     }

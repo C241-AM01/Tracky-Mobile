@@ -18,7 +18,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/user_mobile_navigation" />
 
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/user_nav_card"
         android:layout_width="wrap_content"

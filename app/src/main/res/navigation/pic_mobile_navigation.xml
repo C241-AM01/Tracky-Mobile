@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/pic_mobile_navigation"
-    app:startDestination="@+id/navigation_assetlist">
+    app:startDestination="@+id/navigation_home">
 
     <fragment
-        android:id="@+id/navigation_assetlist"
-        android:name="com.megalogic.tracky.ui.assetlist.AdminAssetListFragment"
+        android:id="@+id/navigation_home"
+        android:name="com.megalogic.tracky.ui.home.PICHomeFragment"
         android:label="@string/title_asset_list"
-        tools:layout="@layout/fragment_admin_asset_list" />
+        tools:layout="@layout/fragment_pic_home" />
 
     <fragment
         android:id="@+id/navigation_asset_request"

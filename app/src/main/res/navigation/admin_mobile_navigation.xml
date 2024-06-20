@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.megalogic.tracky.ui.home.HomeFragment"
+        android:name="com.megalogic.tracky.ui.home.AdminHomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_admin_home" />
 
     <fragment
         android:id="@+id/navigation_assetlist"

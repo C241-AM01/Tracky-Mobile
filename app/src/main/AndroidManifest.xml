@@ -29,7 +29,10 @@
             android:name=".ui.profile.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.detail.DetailActivity"
+            android:name=".ui.detailasset.DetailAssetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.detailtracker.DetailTrackerActivity"
             android:exported="false" />
         <activity
             android:name=".ui.splash.SplashActivity"

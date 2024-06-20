@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.megalogic.tracky.data.model.AssetsItem
-import com.megalogic.tracky.databinding.ActivityDetailBinding
+import com.megalogic.tracky.databinding.ActivityDetailAssetBinding
 import com.megalogic.tracky.utils.setImageFromUrl
 import com.megalogic.tracky.utils.PriceFormat
 import java.time.LocalDate
@@ -18,7 +18,7 @@ class DetailAdapter(
 ) : RecyclerView.Adapter<DetailAdapter.DetailViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailViewHolder {
-        val binding = ActivityDetailBinding.inflate(LayoutInflater.from(context), parent, false)
+        val binding = ActivityDetailAssetBinding.inflate(LayoutInflater.from(context), parent, false)
         return DetailViewHolder(binding)
     }
 
@@ -28,7 +28,7 @@ class DetailAdapter(
 
     override fun getItemCount(): Int = 1
 
-    inner class DetailViewHolder(private val binding: ActivityDetailBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class DetailViewHolder(private val binding: ActivityDetailAssetBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(assetResponse: AssetsItem) {
             with(binding) {
                 tvTrackerId.text = assetResponse.trackerId.toString()
@@ -42,18 +42,18 @@ class DetailAdapter(
                 tvCurrentPrice.text = PriceFormat.getFormattedPrice(assetResponse.currentPrice!!.toInt())
                 tvPurchasedDate.text = DateTimeFormat.formatCustomDate(assetResponse.purchaseDate!!)
                 tvDepreciationRate.text = when (assetResponse.depreciationRate) {
-                    "daily" -> "day"
-                    "weekly" -> "week"
-                    "monthly" -> "month"
-                    "yearly" -> "year"
+                    "daily" -> "Days"
+                    "weekly" -> "Weeks"
+                    "monthly" -> "Months"
+                    "yearly" -> "Years"
                     else -> ""
                 }
 
                 tvDepreciationPeriod.text = when (assetResponse.depreciationRate) {
-                    "daily" -> "day"
-                    "weekly" -> "week"
-                    "monthly" -> "month"
-                    "yearly" -> "year"
+                    "daily" -> "Days"
+                    "weekly" -> "Weeks"
+                    "monthly" -> "Months"
+                    "yearly" -> "Years"
                     else -> ""
                 }
 
@@ -61,6 +61,7 @@ class DetailAdapter(
                     PriceFormat.getFormattedPrice(
                         it.toInt())
                 }
+
                 val purchaseDate = LocalDate.parse(assetResponse.purchaseDate)
                 val today = LocalDate.now()
                 val elapsedTime = ChronoUnit.DAYS.between(purchaseDate, today)

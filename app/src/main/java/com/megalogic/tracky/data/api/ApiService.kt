@@ -8,6 +8,7 @@ import com.megalogic.tracky.data.model.AssetsItem
 import com.megalogic.tracky.data.model.LoginRequest
 import com.megalogic.tracky.data.model.LoginResponse
 import com.megalogic.tracky.data.model.ResponseLogin
+import com.megalogic.tracky.data.model.TrackersItem
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -47,7 +48,7 @@ interface ApiService {
     suspend fun getTrackerDetail(
         @Header("Authorization") token: String,
         @Path("id") id: Int
-    ): Response<ResponseTrackerDetail>
+    ): Response<TrackersItem>
 
     @Multipart
     @POST("assets")

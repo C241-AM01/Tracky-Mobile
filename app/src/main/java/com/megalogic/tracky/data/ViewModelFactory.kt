@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.megalogic.tracky.ui.assetlist.AdminAssetListViewModel
-import com.megalogic.tracky.ui.detail.DetailViewModel
+import com.megalogic.tracky.ui.detailasset.DetailAssetViewModel
 import com.megalogic.tracky.ui.home.HomeViewModel
 import com.megalogic.tracky.ui.login.LoginViewModel
 
@@ -22,8 +22,8 @@ class ViewModelFactory private constructor(private val repository: Repository)
             modelClass.isAssignableFrom(AdminAssetListViewModel::class.java) -> {
                 return AdminAssetListViewModel(repository) as T
             }
-            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
-                return DetailViewModel(repository) as T
+            modelClass.isAssignableFrom(DetailAssetViewModel::class.java) -> {
+                return DetailAssetViewModel(repository) as T
             }
             else -> throw Throwable("Unknown ViewModel class: ${modelClass.name}")
         }

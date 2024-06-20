@@ -1,4 +1,4 @@
-package com.megalogic.tracky.ui.detail
+package com.megalogic.tracky.ui.detailasset
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.megalogic.tracky.data.api.ApiClient
 import com.megalogic.tracky.data.api.ApiService
 import com.megalogic.tracky.data.asset.AssetResponse
-import com.megalogic.tracky.data.asset.DummyData
 import kotlinx.coroutines.launch
 
 class AdminDetailAssetViewModel : ViewModel() {
@@ -34,4 +33,5 @@ class AdminDetailAssetViewModel : ViewModel() {
                 _error.postValue("An error occurred: ${e.message}")
             }
         }
-    }}
+    }
+}
