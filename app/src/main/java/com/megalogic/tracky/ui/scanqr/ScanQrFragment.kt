@@ -17,12 +17,19 @@ import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.google.android.gms.vision.CameraSource
 import com.google.android.gms.vision.Detector
 import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
 import com.megalogic.tracky.R
+
 import com.megalogic.tracky.databinding.FragmentScanQrBinding
+import com.megalogic.tracky.data.ResultState
+import com.megalogic.tracky.data.ViewModelFactory
+import com.megalogic.tracky.ui.assetlist.AdminAssetListViewModel
+import com.megalogic.tracky.data.model.AssetsItem
+
 import java.io.IOException
 
 class ScanQrFragment : Fragment() {
@@ -33,6 +40,9 @@ class ScanQrFragment : Fragment() {
     private var scannedValue = ""
     private var _binding: FragmentScanQrBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var factory: ViewModelFactory
+    private val viewModel: AdminAssetListViewModel by viewModels { factory }
 
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -55,6 +65,8 @@ class ScanQrFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        factory = ViewModelFactory.getInstance(requireContext())
+
         if (ContextCompat.checkSelfPermission(
                 requireContext(), Manifest.permission.CAMERA
             ) != PackageManager.PERMISSION_GRANTED
@@ -67,6 +79,20 @@ class ScanQrFragment : Fragment() {
         val aniSlide: Animation =
             AnimationUtils.loadAnimation(requireContext(), R.anim.scanner_animation)
         binding.barcodeLine.startAnimation(aniSlide)
+
+//        viewModel.assetData.observe(viewLifecycleOwner, Observer { result ->
+//            when (result) {
+//                is ResultState.Success -> {
+//                    displayAssetDetails(result.data)
+//                }
+//                is ResultState.Error -> {
+//                    Toast.makeText(requireContext(), "Error fetching asset details", Toast.LENGTH_SHORT).show()
+//                }
+//                is ResultState.Loading -> {
+//                    // Handle loading state if necessary
+//                }
+//            }
+//        })
     }
 
     private fun setupControls() {
@@ -121,6 +147,8 @@ class ScanQrFragment : Fragment() {
                 val barcodes = detections.detectedItems
                 if (barcodes.size() > 0) {
                     scannedValue = barcodes.valueAt(0).rawValue
+//                    fetchAssetDetails(scannedValue)
+
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(scannedValue))
                     startActivity(intent)
                 } else {
@@ -131,6 +159,35 @@ class ScanQrFragment : Fragment() {
             }
         })
     }
+
+//    private fun fetchAssetDetails(qrCode: String) {
+//        val assetId = extractAssetIdFromQrCode(qrCode)
+//        if (assetId != null) {
+//            viewModel.getAssetDetail(assetId)
+//        } else {
+//            Toast.makeText(requireContext(), "Invalid QR code", Toast.LENGTH_SHORT).show()
+//        }
+//    }
+//
+//    private fun extractAssetIdFromQrCode(qrCode: String): Int? {
+//        // Assuming the QR code contains the asset ID, otherwise modify this function accordingly
+//        return qrCode.toIntOrNull()
+//    }
+//
+//    private fun displayAssetDetails(asset: AssetsItem) {
+//        activity?.runOnUiThread {
+//            binding.itemAssetLayout.visibility = View.VISIBLE
+//            binding.itemAssetLayout.startAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.slide_up))
+//
+//
+//            binding.tvName.text = asset.name
+//            binding.assetDescription.text = asset.description
+//            binding.assetPurchaseDate.text = asset.purchaseDate
+//            binding.assetOriginalPrice.text = asset.originalPrice
+//            binding.assetCurrentPrice.text = asset.currentPrice.toString()
+//            // Set other fields as needed
+//        }
+//    }
 
     private fun askForCameraPermission() {
         requestPermissionLauncher.launch(Manifest.permission.CAMERA)

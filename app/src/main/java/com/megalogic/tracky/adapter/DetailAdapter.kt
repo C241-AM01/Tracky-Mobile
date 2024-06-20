@@ -42,18 +42,18 @@ class DetailAdapter(
                 tvCurrentPrice.text = PriceFormat.getFormattedPrice(assetResponse.currentPrice!!.toInt())
                 tvPurchasedDate.text = DateTimeFormat.formatCustomDate(assetResponse.purchaseDate!!)
                 tvDepreciationRate.text = when (assetResponse.depreciationRate) {
-                    "daily" -> "Days"
-                    "weekly" -> "Weeks"
-                    "monthly" -> "Months"
-                    "yearly" -> "Years"
+                    "daily" -> "day"
+                    "weekly" -> "week"
+                    "monthly" -> "month"
+                    "yearly" -> "year"
                     else -> ""
                 }
 
                 tvDepreciationPeriod.text = when (assetResponse.depreciationRate) {
-                    "daily" -> "Days"
-                    "weekly" -> "Weeks"
-                    "monthly" -> "Months"
-                    "yearly" -> "Years"
+                    "daily" -> "day"
+                    "weekly" -> "week"
+                    "monthly" -> "month"
+                    "yearly" -> "year"
                     else -> ""
                 }
 
