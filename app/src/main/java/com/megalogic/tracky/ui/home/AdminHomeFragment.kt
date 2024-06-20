@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,10 +18,13 @@ import com.megalogic.tracky.data.model.AssetsItem
 import com.megalogic.tracky.databinding.FragmentAdminHomeBinding
 import com.megalogic.tracky.ui.detailasset.DetailAssetActivity
 import com.megalogic.tracky.ui.login.LoginActivity
+import com.megalogic.tracky.ui.profile.ProfileActivity
 import com.megalogic.tracky.utils.JWTDecoder
 
 class AdminHomeFragment : Fragment() {
     private var _binding: FragmentAdminHomeBinding? = null
+    private lateinit var preferenceManager: PreferenceManager
+
     private val binding get() = _binding!!
     private lateinit var assetAdapter: AssetListAdapter
 
@@ -45,27 +47,17 @@ class AdminHomeFragment : Fragment() {
 
         var assetListResponse: List<AssetsItem> = emptyList()
 
-        val sharedPreferences = PreferenceManager(requireContext())
-        val token = sharedPreferences.getToken()
-
-        if (token != null) {
-            val decodedToken = JWTDecoder.decoded(token)
-            val role = decodedToken["role"] as? String ?: "Unknown"
-
-            val displayRole = when (role.toLowerCase()) {
-                "admin" -> "Admin"
-                "user" -> "User"
-                "pic" -> "PIC"
-                else -> "Unknown"
-            }
-
-            val roleTextView: TextView = binding.tvRoleName
-            roleTextView.text = displayRole
-        } else {
-            Toast.makeText(context, "Token not found. Please log in.", Toast.LENGTH_SHORT).show()
-            val intent = Intent(context, LoginActivity::class.java)
+        // Set OnClickListener for profile button
+        binding.btnProfilePage.setOnClickListener {
+            val intent = Intent(context, ProfileActivity::class.java)
             startActivity(intent)
         }
+
+        // Initialize preferenceManager
+        preferenceManager = PreferenceManager(requireContext())
+
+        // Display the role name
+        displayRoleName()
 
         viewModel.assetList.observe(viewLifecycleOwner) { result ->
             when (result) {
@@ -113,6 +105,25 @@ class AdminHomeFragment : Fragment() {
                 return true
             }
         })
+
+        binding.btnProfilePage.setOnClickListener {
+            val intent = Intent(context, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun displayRoleName() {
+        val token = preferenceManager.getToken()
+        if (token != null) {
+            val decodedToken = JWTDecoder.decoded(token)
+            val role = decodedToken["role"] as String
+            binding.tvRoleName.text = when (role) {
+                "admin" -> "Admin"
+                "pic" -> "PIC"
+                "user" -> "User"
+                else -> "Unknown"
+            }
+        }
     }
 
     override fun onDestroyView() {
